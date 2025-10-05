@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eridan Games - Where Shores Meet Stars</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Starfield Background -->
+    <canvas id="starfield"></canvas>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <div class="logo-icon">E</div>
+            <span>Eridan Games</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="">Home</a></li>
+            <li><a href="#games">Games</a></li>
+            <li><a href="#worlds">Worlds</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+        <a href="#community" class="cta-primary">Join our Discord</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Where shores meet <span class="accent">stars</span></h1>
+                <p>Worlds filled with wonder, challenge, and contrast where your choices shape the narrative.</p>
+                <a href="#community" class="cta-primary">Join Our Community</a>
+            </div>
+            <div class="hero-carousel">
+                <div class="carousel-track">
+                    <div class="carousel-slide">
+                        <img src="https://eridangames.com/Maro.png" alt="Maro Character">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://eridangames.com/Liguni.Zelen.png" alt="Liguni Zelen">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://eridangames.com/Dindra.Zemlja.png" alt="Dindra Zemlja">
+                    </div>
+                </div>
+                <button class="carousel-btn prev" aria-label="Previous">‹</button>
+                <button class="carousel-btn next" aria-label="Next">›</button>
+                <div class="carousel-indicators">
+                    <span class="carousel-indicator active" data-slide="0"></span>
+                    <span class="carousel-indicator" data-slide="1"></span>
+                    <span class="carousel-indicator" data-slide="2"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artist Banner -->
+    <div class="artist-banner">
+        <div class="artist-banner-content">
+            <h2>We Celebrate <span class="accent">Human Artistry</span>!</h2>
+            <p>Our games feature 100% human-created art. All AI images you see here are placeholders until original art is complete.</p>
+            <div class="social-links">
+                <a href="#" class="social-btn">💬 Join Discord</a>
+                <a href="#" class="social-btn">📧 Subscribe</a>
+                <a href="#" class="social-btn">▶️ YouTube</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Games -->
+    <section id="games">
+        <div class="section-header">
+            <h2>Featured Games</h2>
+            <p>Worlds in development, stories in motion.</p>
+        </div>
+        <div class="games-gallery-wrapper">
+            <div class="gallery-nav prev">
+                <span>‹</span>
+            </div>
+            <div class="games-gallery">
+                <a href="#" class="game-card">
+                    <div class="game-card-image">
+                        <img src="https://placehold.co/400x200/1e293b/6ee7b7?text=Rika+Board+Game" alt="Rika: The Board Game">
+                        <div class="status-badge">In Development</div>
+                    </div>
+                    <div class="game-card-content">
+                        <h3>Rika: The Board Game</h3>
+                        <p>Asymmetrical card-driven skirmish game with unique tactical depth.</p>
+                        <div class="game-tags">
+                            <span class="tag">Board Game</span>
+                            <span class="tag">Card game</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="game-card">
+                    <div class="game-card-image">
+                        <img src="https://placehold.co/400x200/1e293b/5eead4?text=HAVEN+RPG" alt="H.A.V.E.N RPG">
+                        <div class="status-badge">In Development</div>
+                    </div>
+                    <div class="game-card-content">
+                        <h3>H.A.V.E.N RPG</h3>
+                        <p>Supernatural-noir RPG steeped in crime and occult mysteries.</p>
+                        <div class="game-tags">
+                            <span class="tag">RPG</span>
+                            <span class="tag">Investigation</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="game-card">
+                    <div class="game-card-image">
+                        <img src="https://placehold.co/400x200/1e293b/fbbf24?text=Aliens+as+Allies" alt="Rika: Aliens as Allies">
+                        <div class="status-badge">In Development</div>
+                    </div>
+                    <div class="game-card-content">
+                        <h3>Rika: Aliens as Allies</h3>
+                        <p>Therapeutically inspired deeply relational narrative experience.</p>
+                        <div class="game-tags">
+                            <span class="tag">RPG</span>
+                            <span class="tag">Therapeutic</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="gallery-nav next">
+                <span>›</span>
+            </div>
+        </div>
+        <a href="#" class="view-all-btn">View All Games →</a>
+    </section>
+
+    <!-- Worlds -->
+    <section id="worlds">
+        <div class="section-header">
+            <h2>Our Worlds</h2>
+            <p>We build authentic, boldly contrasted worlds, where every layer invites discovery.</p>
+        </div>
+        <div class="worlds-grid">
+            <div class="world-card">
+                <div class="world-card-image">
+                    <img src="https://placehold.co/600x250/1e293b/6ee7b7?text=Rule+of+Rika" alt="Rule of Rika">
+                </div>
+                <div class="world-card-content">
+                    <div class="world-card-header">
+                        <h3>Rule of Rika</h3>
+                        <span class="games-count">🎮 3 games</span>
+                    </div>
+                    <p>A mythic-ethnographic space opera setting rich in political intrigue, military conflict and soft sci-fi wonder.</p>
+                </div>
+                <div class="world-card-footer">
+                    Explore the world →
+                </div>
+            </div>
+
+            <div class="world-card">
+                <div class="world-card-image">
+                    <img src="https://placehold.co/600x250/1e293b/f97316?text=Atomic+Horizon" alt="Atomic Horizon">
+                </div>
+                <div class="world-card-content">
+                    <div class="world-card-header">
+                        <h3>Atomic Horizon</h3>
+                        <span class="games-count">🎮 1 game</span>
+                    </div>
+                    <p>A corporate-controlled Solar System where power fantasy meets tactical brutality in customizable missions.</p>
+                </div>
+                <div class="world-card-footer">
+                    Explore the world →
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="newsletter-container">
+            <div class="newsletter-icon">📧</div>
+            <h2>Stay Updated</h2>
+            <p>Get the latest news about our games and worlds.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <label class="checkbox-label">
+                    <input type="checkbox" required>
+                    <span>I agree to receive marketing emails from Eridan Games Studio and understand I can unsubscribe at any time.</span>
+                </label>
+                <button type="submit" class="subscribe-btn">Subscribe to Newsletter</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-branding">
+                <div class="logo">
+                    <div class="logo-icon">E</div>
+                    <span>Eridan Games Studio</span>
+                </div>
+                <p class="footer-tagline">Where shores meet stars</p>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Games</h4>
+                    <a href="#">Rika: The Board Game</a>
+                    <a href="#">H.A.V.E.N RPG</a>
+                    <a href="#">Rika: Aliens as Allies</a>
+                    <a href="#">All Games</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Worlds</h4>
+                    <a href="#">Rule of Rika</a>
+                    <a href="#">Atomic Horizon</a>
+                    <a href="#">All Worlds</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Studio</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Our Journey</a>
+                    <a href="#">Contact</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Community</h4>
+                    <a href="#">Discord</a>
+                    <a href="#">Newsletter</a>
+                    <a href="#">YouTube</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>Eridan Games Studio. All rights reserved. 2025.</p>
+            <div class="footer-social">
+                <a href="#" aria-label="Twitter">𝕏</a>
+                <a href="#" aria-label="Discord">💬</a>
+                <a href="#" aria-label="YouTube">▶️</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
