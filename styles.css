@@ -980,7 +980,7 @@ footer {
 /* Mission Section */
 .mission-section {
     padding: 5rem 5%;
-    background: var(--darker-bg);
+    /*background: var(--darker-bg);*/
 }
 
 .mission-content {
@@ -1078,7 +1078,7 @@ footer {
 /* Journey Section */
 .journey-section {
     padding: 5rem 5%;
-    background: var(--darker-bg);
+    /*background: var(--darker-bg);*/
 }
 
 /* Timeline Styles */
