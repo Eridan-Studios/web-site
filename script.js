@@ -1,13 +1,79 @@
 // ===== CAROUSEL =====
-const track = document.querySelector('.carousel-track');
-const slides = Array.from(track.children);
-const nextBtn = document.querySelector('.carousel-btn.next');
-const prevBtn = document.querySelector('.carousel-btn.prev');
-const indicators = Array.from(document.querySelectorAll('.carousel-indicator'));
-
+const CAROUSEL_JSON_URL = 'content/carousel.json';
+let track, slides, nextBtn, prevBtn, indicators;
 let currentSlide = 0;
-const totalSlides = slides.length;
+let totalSlides = 0;
 let autoplayInterval;
+
+// Load carousel images from JSON
+async function loadCarouselImages() {
+    try {
+        const response = await fetch(CAROUSEL_JSON_URL);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const images = await response.json();
+        populateCarousel(images);
+    } catch (error) {
+        console.error('Error loading carousel images:', error);
+        // Fallback: use default images
+        const fallbackImages = [
+            'https://eridangames.com/Maro.png',
+            'https://eridangames.com/Liguni.Zelen.png',
+            'https://eridangames.com/Dindra.Zemlja.png'
+        ];
+        populateCarousel(fallbackImages);
+    }
+}
+
+// Populate carousel with images
+function populateCarousel(images) {
+    track = document.getElementById('carousel-track');
+    const indicatorsContainer = document.getElementById('carousel-indicators');
+    
+    // Clear existing content
+    track.innerHTML = '';
+    indicatorsContainer.innerHTML = '';
+    
+    // Create slides
+    images.forEach((imageSrc, index) => {
+        const slide = document.createElement('div');
+        slide.className = 'carousel-slide';
+        
+        const img = document.createElement('img');
+        // Check if it's a local image or external URL
+        if (imageSrc.startsWith('http')) {
+            img.src = imageSrc;
+        } else {
+            img.src = `content/images/${imageSrc}`;
+        }
+        img.alt = `Carousel Image ${index + 1}`;
+        
+        slide.appendChild(img);
+        track.appendChild(slide);
+        
+        // Create indicator
+        const indicator = document.createElement('span');
+        indicator.className = 'carousel-indicator';
+        if (index === 0) indicator.classList.add('active');
+        indicator.setAttribute('data-slide', index);
+        indicatorsContainer.appendChild(indicator);
+    });
+    
+    // Re-initialize carousel elements
+    slides = Array.from(track.children);
+    nextBtn = document.querySelector('.carousel-btn.next');
+    prevBtn = document.querySelector('.carousel-btn.prev');
+    indicators = Array.from(document.querySelectorAll('.carousel-indicator'));
+    totalSlides = slides.length;
+    
+    // Set up event listeners
+    setupCarouselEvents();
+    
+    // Initialize carousel
+    updateCarousel(0);
+    startAutoplay();
+}
 
 function updateCarousel(index) {
     slides.forEach((slide, i) => {
@@ -46,34 +112,36 @@ function prevSlide() {
     updateCarousel(prev);
 }
 
-// Button controls
-nextBtn.addEventListener('click', () => {
-    nextSlide();
-    resetAutoplay();
-});
-
-prevBtn.addEventListener('click', () => {
-    prevSlide();
-    resetAutoplay();
-});
-
-// Click on side slides to navigate
-slides.forEach((slide, index) => {
-    slide.addEventListener('click', () => {
-        if (!slide.classList.contains('active')) {
-            updateCarousel(index);
-            resetAutoplay();
-        }
-    });
-});
-
-// Indicator controls
-indicators.forEach((indicator, index) => {
-    indicator.addEventListener('click', () => {
-        updateCarousel(index);
+function setupCarouselEvents() {
+    // Button controls
+    nextBtn.addEventListener('click', () => {
+        nextSlide();
         resetAutoplay();
     });
-});
+
+    prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAutoplay();
+    });
+
+    // Click on side slides to navigate
+    slides.forEach((slide, index) => {
+        slide.addEventListener('click', () => {
+            if (!slide.classList.contains('active')) {
+                updateCarousel(index);
+                resetAutoplay();
+            }
+        });
+    });
+
+    // Indicator controls
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            updateCarousel(index);
+            resetAutoplay();
+        });
+    });
+}
 
 // Autoplay
 function startAutoplay() {
@@ -96,9 +164,8 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Initialize carousel
-updateCarousel(0);
-startAutoplay();
+// Initialize carousel when DOM is loaded
+document.addEventListener('DOMContentLoaded', loadCarouselImages);
 
 // ===== STARFIELD =====
 const canvas = document.getElementById('starfield');

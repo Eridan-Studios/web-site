@@ -114,12 +114,12 @@ nav {
 /* Hero Section with Stacked Cards */
 .hero {
     position: relative;
-    min-height: 85vh;
+    min-height: 75vh;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding: 4rem 5%;
+    padding: 2rem 5% 5rem 5%;
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -347,6 +347,16 @@ section {
     padding: 5rem 5%;
     /* max-width: 1400px; */
     margin: 0 auto;
+}
+
+#worlds {
+    padding: 3rem 5%;
+}
+
+.section-divider {
+    border-top: 1px solid var(--border-color);
+    margin: 0 auto;
+    width: 80%;
 }
 
 .section-header {
