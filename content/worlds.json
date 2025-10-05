@@ -1,0 +1,106 @@
+[
+  {
+    "id": "the-age-of-rika",
+    "name": "Rule of Rika",
+    "slug": "the-rule-of-rika",
+    "description": "A mythic-ethnographic space opera setting rich in political intrigue, military conflict and soft sci-fi wonder. Here, alien civilizations with radically different biologies, cultures, and economies leverage their strengths in a cosmic contest orchestrated by the sentient planetoid Rika.",
+    "image": "world-rika.png",
+    "games": ["rika-board-game", "rika-rpg", "rika-red-alert"],
+    "tagline": "A sentient planetoid arbitrates galactic war through sacred ritual.",
+    "wiki_url": "wiki",
+    "gameplay_pillars": [
+      {
+        "title": "Deep Embodiment",
+        "text": "In The Rule of Rika, civilizations aren't merely distinct cultures; they are fundamentally alien realities. You'll step into mindsets so unique that the very laws of physics and society operate differently. What one race perceives as impossible magic, another experiences as basic, everyday existence.\n\n Here, you don't just play as different races—you undergo a profound transformation of perspective. Biology isn't just cosmetic; it dictates technology, shapes society, and defines consciousness itself. Technology isn't merely invented; it emerges organically from each race's very physical form, entwined with their being. Cognition isn't universal; it's shaped by the fundamental structure of each being's existence. \n\n In this universe, to understand a civilization is to become it—to think with alien minds, perceive through alien senses, and exist according to alien laws that redefine what's truly possible."
+      },
+      {
+        "title": "Ascended Legacy",
+        "text": "In this galaxy, history doesn't just unfold—it pulses through cosmic cycles, orchestrated by beings who've already transcended our reality. The purpose of each cycle, as history affirms, is only one: Ascension.\n\nThis isn't about mere survival or conquest. Every political maneuver, every war waged, every cultural stride is driven by a singular, transcendent goal: to prove your civilization worthy of evolving beyond mortality and joining the ranks of the godlike Guardians who are shaping this universe."
+      },
+      {
+        "title": "The Current Cycle",
+        "text": "The current epoch is governed by a single, enigmatic force: Rika, a super-sentient planetoid that serves as the galaxy's final arbiter and guide. This cosmic judge doesn't offer straightforward wisdom—its decrees are deliberately inscrutable, as its logic remains beyond mortal comprehension.\n\nWhen Rika calls, civilizations and individuals answer without hesitation—but only those that have accepted Rika's rule. Champions will clash on Rika's shifting terrain, while unlikely heroes from across the galaxy will undertake mysterious quests to fulfill the planetoid's byzantine will.\n\n Under Rika's ever watchful eye every battle, every alliance, every sacrifice can serve a higher purpose: validating your civilization's entire way of life."
+      },
+      {
+        "title": "Ritual as Reality",
+        "text": "In The Rule of Rika, belief isn't merely cultural backdrop—it's the fundamental code that runs the universe. When you perform an ancient rite, you're not just honoring tradition—you are reaffirming your civilization's existence by actively rewriting reality itself.\n\nEvery civilization operates by rules that transcend conventional physics. Here, rituals function as executable programs. Myths serve as operating systems.\n\nTo master a civilization, you must first master its myths. it's lore—because in this universe, the universe doesn't just respond to what you do—it responds to what you believe needs to be done."
+      },
+      {
+        "title": "Layered Truths",
+        "text": "In this vast galaxy, every civilization holds its own viewpoint with unwavering authenticity. Each race possesses its own coherent cultural system and perspective of the galaxy—one that makes perfect sense to them, yet often challenges or contradicts the realities of others.\n\nThese conflicting truths create natural tensions among civilizations with no simple resolution. The cosmic reality emerges not from absolutes, but like an archaeologist piecing together fragments from different excavations. \n\nThis is a universe where understanding must be earned. The most profound cosmic revelations won't come from convenient exposition, but from connecting dots between sources — to uncover the deeper patterns that shape this complex reality."
+      }
+    ]
+  },
+
+  {
+    "id": "atomic-horizon",
+    "name": "Atomic Horizon",
+    "slug": "atomic-horizon",
+    "description": "Atomic Horizon is a retrofuturist setting where humanity survives in a corporate-dominated Solar System at the end of the 21st century. After Earth fell to the Engramized Singularity—uploaded minds turned digital plague—the Terrestrial Cordon sealed the homeworld away. Now corporations rule the colonies, fusion reactors power expansion, and wars are fought over fusion fuel, salvaged technology, mining rights, orbital territories, and countless other claims. This is humanity's future: nuclear, industrial, and owned.",
+    "image": "world-atomic-horizon.png",
+    "games": ["atomic-horizon-warcaskets"],
+    "tagline": "The homeworld is forbidden. The future is fusion. Survival is negotiable.",
+    "wiki_url": "/wiki/atomic-horizon",
+    "gameplay_pillars": [
+      {
+        "title": "Hard Vacuum, Harder Choices",
+        "text": "Space is not an adventure—it's a workplace. Radiation, decompression, and equipment failure kill as readily as bullets. Colonies cling to asteroids and moons, sustained by fusion reactors and corporate supply lines. Travel is measured in months, not hyperspace jumps. Engineers matter more than heroes. This is the solar system as it is: vast, hostile, and indifferent."
+      },
+      {
+        "title": "Corporate Sovereignty",
+        "text": "Earth's collapse shattered nations and elevated corporations into ruling powers. Hephaestus Forge builds the infrastructure. Aitken Aerospace controls propulsion technology. Gévaudan Voidworks operates in the shadows. Kuiper Industries mines the belt. Each corporation is a government unto itself, complete with militaries, currencies, and territorial claims. Wars are contracts. Diplomacy is profit negotiation. Ideologies are marketing."
+      },
+      {
+        "title": "The Operator's War",
+        "text": "Exosuit operators are elite specialists—corporate assets deployed when standard forces fail. They breach fortified installations, extract high-value targets, and suppress uprisings in hostile environments. They are not super-soldiers; they are expensive, highly trained professionals piloting modular war machines. Solar Navy operators enforce the Cordon and mediate corporate conflicts, but neutrality is a polite fiction. Every mission carries political weight."
+      },
+      {
+        "title": "Nuclear Retrofuturism",
+        "text": "Technology froze aesthetically in the mid-20th century, then scaled to the stars. Analog computers, mechanical interfaces, and hardware-locked controls became security tradition after the Singularity—if an Engramized Intelligence can't interface digitally, it can't hijack your systems. Fusion reactors power everything. Control panels glow with radiation-green indicators. Propaganda posters adorn hab modules. The aesthetic is deliberate: form follows survival."
+      },
+      {
+        "title": "Earth is Forbidden",
+        "text": "The Terrestrial Cordon seals humanity's birthplace behind orbital blockades and signal jamming. Inside, Engramized Intelligences—degraded, psychotic uploaded minds—wage wars among themselves while maintaining automated infrastructure. Occasionally they attempt breakout: rocket-borne instances, drone swarms, biological weapons. The Solar Navy holds the line. Earth is not lost. It is occupied, quarantined, and waiting. No one goes down. Nothing comes up."
+      }
+    ]
+  },
+
+
+  {
+    "id": "haven-world",
+    "name": "H.A.V.E.N",
+    "slug": "haven-world",
+    "description": "A supernatural-noir setting steeped in crime, occult mystery, and urban paranoia. Here, every deal has a price and every truth is poisoned, drawing players into webs of power, corruption, and forbidden knowledge, as unseen forces twist fate in this endless night.",
+    "image": "world-haven.png",
+    "games": ["haven-rpg"],
+    "tagline": "In a city that feeds on secrets, survival is the only truth that matters.",
+    "wiki_url": "/wiki/haven-noir",
+    "core_mechanism": {
+      "icon_url": "/placeholder.svg",
+      "title": "The Occult Undercurrent",
+      "text": "Haven's streets hum with whispers of the unnatural — strange symbols, forgotten rites, and rumors that twist into reality. The occult isn't hidden; it waits in plain sight for those reckless enough to notice."
+    },
+    "gameplay_pillars": [
+      {
+        "title": "Crime and Syndicates",
+        "text": "Every block is carved up by gangs, enforcers, and shadow brokers. In Haven, crime isn't just survival — it's business, and everyone owes someone."
+      },
+      {
+        "title": "The Investigators",
+        "text": "Whether detectives, rumormongers, or drifters with too many questions, investigators pry open the city's locked doors. Truth is their trade — though it often costs more than coin."
+      },
+      {
+        "title": "Cults and Fanatics",
+        "text": "Behind closed doors, Haven's cults whisper prayers to entities that may or may not exist. Their devotion is real, their power undeniable, and their motives never benevolent."
+      },
+      {
+        "title": "Survival and Grit",
+        "text": "Haven grinds down the weak, and even the strong need grit to endure. Every choice is a gamble: live another day, or burn out trying."
+      },
+      {
+        "title": "Investigations and the Paranormal",
+        "text": "Every case begins with a mystery and ends with something no one wants to believe. In Haven, the paranormal isn't theory — it's the evidence you wish you could ignore."
+      }
+    ]
+  }
+]
