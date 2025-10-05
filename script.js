@@ -198,3 +198,302 @@ window.addEventListener('resize', () => {
 // Initialize
 resizeCanvas();
 animate();
+
+// ===== GAMES GALLERY =====
+const GAMES_JSON_URL = 'https://eridan-studios.github.io/web-site/content/games.json';
+const gamesGallery = document.getElementById('games-gallery');
+const gameCardTemplate = document.getElementById('game-card-template');
+
+// Fetch games data and populate gallery
+async function loadGames() {
+    try {
+        const response = await fetch(GAMES_JSON_URL);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const games = await response.json();
+        populateGamesGallery(games);
+    } catch (error) {
+        console.error('Error loading games:', error);
+        // Fallback: show error message or placeholder content
+        gamesGallery.innerHTML = '<p>Unable to load games. Please try again later.</p>';
+    }
+}
+
+// Populate the games gallery with data from JSON
+function populateGamesGallery(games) {
+    // Clear existing content
+    gamesGallery.innerHTML = '';
+    
+    // Sort games by world priority
+    const sortedGames = sortGamesByWorld(games);
+    
+    sortedGames.forEach(game => {
+        const gameCard = createGameCard(game);
+        gamesGallery.appendChild(gameCard);
+    });
+}
+
+// Sort games by world priority, then alphabetically by title within each world
+function sortGamesByWorld(games) {
+    const worldPriority = {
+        'the-age-of-rika': 1,
+        'haven-world': 2,
+        'atomic-horizon': 3
+    };
+    
+    return games.sort((a, b) => {
+        const priorityA = worldPriority[a.world] || 999; // Unknown worlds go last
+        const priorityB = worldPriority[b.world] || 999;
+        
+        // First sort by world priority
+        if (priorityA !== priorityB) {
+            return priorityA - priorityB;
+        }
+        
+        // If same world, sort alphabetically by title
+        return a.title.localeCompare(b.title);
+    });
+}
+
+// Create a game card element from game data
+function createGameCard(game) {
+    // Clone the template
+    const gameCard = gameCardTemplate.content.cloneNode(true);
+    
+    // Get elements from the cloned template
+    const cardLink = gameCard.querySelector('.game-card');
+    const cardImage = gameCard.querySelector('.game-card-image img');
+    const statusBadge = gameCard.querySelector('.status-badge');
+    const cardTitle = gameCard.querySelector('.game-card-content h3');
+    const cardDescription = gameCard.querySelector('.game-card-content p');
+    const tagsContainer = gameCard.querySelector('.game-tags');
+    const galleryContainer = gameCard.querySelector('.game-gallery');
+    
+    // Set card link (you can customize this URL structure)
+    cardLink.href = `#game-${game.slug}`;
+    
+    // Set image source and alt text
+    const imagePath = game.image.startsWith('/') ? game.image : `content/images/${game.image}`;
+    cardImage.src = imagePath;
+    cardImage.alt = game.title;
+    
+    // Set status badge
+    statusBadge.textContent = game.status;
+    
+    // Set title and description
+    cardTitle.textContent = game.title;
+    cardDescription.textContent = game.shortDescription;
+    
+    // Create and add genre tags
+    tagsContainer.innerHTML = '';
+    if (game.genre && Array.isArray(game.genre)) {
+        game.genre.slice(0, 3).forEach(genre => { // Limit to 3 tags for display
+            const tag = document.createElement('span');
+            tag.className = 'tag';
+            tag.textContent = genre;
+            tagsContainer.appendChild(tag);
+        });
+    }
+    
+    // Populate gallery if it exists
+    if (game.gallery && Array.isArray(game.gallery) && game.gallery.length > 0) {
+        populateGameGallery(galleryContainer, game.gallery, game.title);
+    }
+    
+    return gameCard;
+}
+
+// Populate gallery container with images
+function populateGameGallery(galleryContainer, galleryImages, gameTitle) {
+    galleryContainer.innerHTML = '';
+    
+    galleryImages.forEach((imagePath, index) => {
+        const galleryImage = document.createElement('img');
+        const fullImagePath = imagePath.startsWith('/') ? imagePath : `content/images${imagePath}`;
+        galleryImage.src = fullImagePath;
+        galleryImage.alt = `${gameTitle} - Gallery Image ${index + 1}`;
+        galleryImage.className = 'gallery-image';
+        galleryContainer.appendChild(galleryImage);
+    });
+    
+    // Add gallery navigation functionality
+    addGalleryNavigation(galleryContainer);
+}
+
+// Add gallery navigation functionality
+function addGalleryNavigation(galleryContainer) {
+    const images = galleryContainer.querySelectorAll('.gallery-image');
+    if (images.length <= 1) return;
+    
+    let currentImageIndex = 0;
+    
+    // Show only the first image initially
+    images.forEach((img, index) => {
+        img.style.display = index === 0 ? 'block' : 'none';
+    });
+    
+    // Add navigation arrows
+    const prevArrow = document.createElement('div');
+    prevArrow.className = 'gallery-nav gallery-prev';
+    prevArrow.innerHTML = '‹';
+    prevArrow.style.display = 'none';
+    
+    const nextArrow = document.createElement('div');
+    nextArrow.className = 'gallery-nav gallery-next';
+    nextArrow.innerHTML = '›';
+    nextArrow.style.display = 'none';
+    
+    galleryContainer.appendChild(prevArrow);
+    galleryContainer.appendChild(nextArrow);
+    
+    // Navigation functions
+    function showImage(index) {
+        images.forEach((img, i) => {
+            img.style.display = i === index ? 'block' : 'none';
+        });
+        prevArrow.style.display = index > 0 ? 'block' : 'none';
+        nextArrow.style.display = index < images.length - 1 ? 'block' : 'none';
+    }
+    
+    function nextImage() {
+        if (currentImageIndex < images.length - 1) {
+            currentImageIndex++;
+            showImage(currentImageIndex);
+        }
+    }
+    
+    function prevImage() {
+        if (currentImageIndex > 0) {
+            currentImageIndex--;
+            showImage(currentImageIndex);
+        }
+    }
+    
+    // Event listeners
+    nextArrow.addEventListener('click', (e) => {
+        e.stopPropagation();
+        nextImage();
+    });
+    
+    prevArrow.addEventListener('click', (e) => {
+        e.stopPropagation();
+        prevImage();
+    });
+    
+    // Auto-advance gallery on hover
+    let galleryInterval;
+    const gameCard = galleryContainer.closest('.game-card');
+    
+    gameCard.addEventListener('mouseenter', () => {
+        if (images.length > 1) {
+            galleryInterval = setInterval(nextImage, 2000); // Change image every 2 seconds
+        }
+    });
+    
+    gameCard.addEventListener('mouseleave', () => {
+        if (galleryInterval) {
+            clearInterval(galleryInterval);
+            currentImageIndex = 0; // Reset to first image
+            showImage(currentImageIndex);
+        }
+    });
+}
+
+// Initialize games gallery when DOM is loaded
+document.addEventListener('DOMContentLoaded', loadGames);
+
+// ===== WORLDS GALLERY =====
+const WORLDS_JSON_URL = 'https://eridan-studios.github.io/web-site/content/worlds.json';
+const worldsGrid = document.getElementById('worlds-grid');
+const worldCardTemplate = document.getElementById('world-card-template');
+
+// Fetch worlds data and populate gallery
+async function loadWorlds() {
+    try {
+        const response = await fetch(WORLDS_JSON_URL);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const worlds = await response.json();
+        populateWorldsGrid(worlds);
+    } catch (error) {
+        console.error('Error loading worlds:', error);
+        // Fallback: show error message or placeholder content
+        worldsGrid.innerHTML = '<p>Unable to load worlds. Please try again later.</p>';
+    }
+}
+
+// Populate the worlds grid with data from JSON
+function populateWorldsGrid(worlds) {
+    // Clear existing content
+    worldsGrid.innerHTML = '';
+    
+    // Sort worlds alphabetically by name
+    const sortedWorlds = sortWorldsByName(worlds);
+    
+    sortedWorlds.forEach(world => {
+        const worldCard = createWorldCard(world);
+        worldsGrid.appendChild(worldCard);
+    });
+}
+
+// Sort worlds by world priority, then alphabetically by name within each world
+function sortWorldsByName(worlds) {
+    const worldPriority = {
+        'the-age-of-rika': 1,
+        'haven-world': 2,
+        'atomic-horizon': 3
+    };
+    
+    return worlds.sort((a, b) => {
+        const priorityA = worldPriority[a.id] || 999; // Unknown worlds go last
+        const priorityB = worldPriority[b.id] || 999;
+        
+        // First sort by world priority
+        if (priorityA !== priorityB) {
+            return priorityA - priorityB;
+        }
+        
+        // If same world priority, sort alphabetically by name
+        return a.name.localeCompare(b.name);
+    });
+}
+
+// Create a world card element from world data
+function createWorldCard(world) {
+    // Clone the template
+    const worldCard = worldCardTemplate.content.cloneNode(true);
+    
+    // Get elements from the cloned template
+    const cardImage = worldCard.querySelector('.world-card-image img');
+    const cardTitle = worldCard.querySelector('.world-card-content h3');
+    const gamesCount = worldCard.querySelector('.games-count');
+    const cardDescription = worldCard.querySelector('.world-card-content p');
+    const cardFooter = worldCard.querySelector('.world-card-footer');
+    
+    // Set image source and alt text
+    const imagePath = world.image.startsWith('/') ? world.image : `content/images/${world.image}`;
+    cardImage.src = imagePath;
+    cardImage.alt = world.name;
+    
+    // Set title
+    cardTitle.textContent = world.name;
+    
+    // Set games count
+    const gameCount = world.games ? world.games.length : 0;
+    gamesCount.textContent = `🎮 ${gameCount} game${gameCount !== 1 ? 's' : ''}`;
+    
+    // Set description
+    cardDescription.textContent = world.description;
+    
+    // Set footer link (you can customize this URL structure)
+    cardFooter.onclick = () => {
+        window.location.href = `#world-${world.slug}`;
+    };
+    
+    return worldCard;
+}
+
+// Initialize worlds grid when DOM is loaded
+document.addEventListener('DOMContentLoaded', loadWorlds);

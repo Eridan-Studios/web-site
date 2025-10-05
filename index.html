@@ -80,51 +80,8 @@
             <div class="gallery-nav prev">
                 <span>‹</span>
             </div>
-            <div class="games-gallery">
-                <a href="#" class="game-card">
-                    <div class="game-card-image">
-                        <img src="https://placehold.co/400x200/1e293b/6ee7b7?text=Rika+Board+Game" alt="Rika: The Board Game">
-                        <div class="status-badge">In Development</div>
-                    </div>
-                    <div class="game-card-content">
-                        <h3>Rika: The Board Game</h3>
-                        <p>Asymmetrical card-driven skirmish game with unique tactical depth.</p>
-                        <div class="game-tags">
-                            <span class="tag">Board Game</span>
-                            <span class="tag">Card game</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="game-card">
-                    <div class="game-card-image">
-                        <img src="https://placehold.co/400x200/1e293b/5eead4?text=HAVEN+RPG" alt="H.A.V.E.N RPG">
-                        <div class="status-badge">In Development</div>
-                    </div>
-                    <div class="game-card-content">
-                        <h3>H.A.V.E.N RPG</h3>
-                        <p>Supernatural-noir RPG steeped in crime and occult mysteries.</p>
-                        <div class="game-tags">
-                            <span class="tag">RPG</span>
-                            <span class="tag">Investigation</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="game-card">
-                    <div class="game-card-image">
-                        <img src="https://placehold.co/400x200/1e293b/fbbf24?text=Aliens+as+Allies" alt="Rika: Aliens as Allies">
-                        <div class="status-badge">In Development</div>
-                    </div>
-                    <div class="game-card-content">
-                        <h3>Rika: Aliens as Allies</h3>
-                        <p>Therapeutically inspired deeply relational narrative experience.</p>
-                        <div class="game-tags">
-                            <span class="tag">RPG</span>
-                            <span class="tag">Therapeutic</span>
-                        </div>
-                    </div>
-                </a>
+            <div class="games-gallery" id="games-gallery">
+                <!-- Game cards will be dynamically populated here -->
             </div>
             <div class="gallery-nav next">
                 <span>›</span>
@@ -139,38 +96,8 @@
             <h2>Our Worlds</h2>
             <p>We build authentic, boldly contrasted worlds, where every layer invites discovery.</p>
         </div>
-        <div class="worlds-grid">
-            <div class="world-card">
-                <div class="world-card-image">
-                    <img src="https://placehold.co/600x250/1e293b/6ee7b7?text=Rule+of+Rika" alt="Rule of Rika">
-                </div>
-                <div class="world-card-content">
-                    <div class="world-card-header">
-                        <h3>Rule of Rika</h3>
-                        <span class="games-count">🎮 3 games</span>
-                    </div>
-                    <p>A mythic-ethnographic space opera setting rich in political intrigue, military conflict and soft sci-fi wonder.</p>
-                </div>
-                <div class="world-card-footer">
-                    Explore the world →
-                </div>
-            </div>
-
-            <div class="world-card">
-                <div class="world-card-image">
-                    <img src="https://placehold.co/600x250/1e293b/f97316?text=Atomic+Horizon" alt="Atomic Horizon">
-                </div>
-                <div class="world-card-content">
-                    <div class="world-card-header">
-                        <h3>Atomic Horizon</h3>
-                        <span class="games-count">🎮 1 game</span>
-                    </div>
-                    <p>A corporate-controlled Solar System where power fantasy meets tactical brutality in customizable missions.</p>
-                </div>
-                <div class="world-card-footer">
-                    Explore the world →
-                </div>
-            </div>
+        <div class="worlds-grid" id="worlds-grid">
+            <!-- World cards will be dynamically populated here -->
         </div>
     </section>
 
@@ -203,33 +130,20 @@
             </div>
             
             <div class="footer-links">
-                <div class="footer-column">
-                    <h4>Games</h4>
-                    <a href="#">Rika: The Board Game</a>
-                    <a href="#">H.A.V.E.N RPG</a>
-                    <a href="#">Rika: Aliens as Allies</a>
-                    <a href="#">All Games</a>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>Worlds</h4>
-                    <a href="#">Rule of Rika</a>
-                    <a href="#">Atomic Horizon</a>
-                    <a href="#">All Worlds</a>
-                </div>
                 
                 <div class="footer-column">
                     <h4>Studio</h4>
+                    <a href="">Home</a>
+                    <a href="#games">Games</a>
+                    <a href="#worlds">Worlds</a>
                     <a href="#">About Us</a>
-                    <a href="#">Our Journey</a>
-                    <a href="#">Contact</a>
                 </div>
                 
                 <div class="footer-column">
                     <h4>Community</h4>
                     <a href="#">Discord</a>
+                    <a href="#">Gamefound</a>
                     <a href="#">Newsletter</a>
-                    <a href="#">YouTube</a>
                 </div>
             </div>
         </div>
@@ -243,6 +157,45 @@
             </div>
         </div>
     </footer>
+
+    <!-- Game Card Template -->
+    <template id="game-card-template">
+        <a href="#" class="game-card">
+            <div class="game-card-image">
+                <img src="" alt="">
+                <div class="status-badge"></div>
+                <div class="game-gallery" style="display: none;">
+                    <!-- Gallery images will be populated dynamically -->
+                </div>
+            </div>
+            <div class="game-card-content">
+                <h3></h3>
+                <p></p>
+                <div class="game-tags">
+                    <!-- Tags will be populated dynamically -->
+                </div>
+            </div>
+        </a>
+    </template>
+
+    <!-- World Card Template -->
+    <template id="world-card-template">
+        <div class="world-card">
+            <div class="world-card-image">
+                <img src="" alt="">
+            </div>
+            <div class="world-card-content">
+                <div class="world-card-header">
+                    <h3></h3>
+                    <span class="games-count"></span>
+                </div>
+                <p></p>
+            </div>
+            <div class="world-card-footer">
+                Explore the world →
+            </div>
+        </div>
+    </template>
 
     <script src="script.js"></script>
 

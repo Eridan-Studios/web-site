@@ -5,13 +5,13 @@
     "slug": "rika-board-game",
     "description": "A tactical 2vs2 board game experience. Jointly command one of the four unique races in an asymmetric strategic battle fought on two fronts using powerful cards, units and limited communication.",
     "shortDescription": "2vs2 asymmetrical card driven skirmish game with unique rules and mechanics.",
-    "image": "world-rika-liguni-zeleni.png",
+    "image": "rika-liguni-zeleni.png",
     "gallery": [
       "/rikabgg1.jpg",
       "/rikabgg2.jpg",
       "/rikabgg3.jpg"
     ],
-    "status": "in development",
+    "status": "In Development",
     "releaseDate": "Upcoming",
     "platforms": ["TTS-upcoming", "Gamefound"],
     "synopsis": "Choose your partner and master the distinct strategies of a unique alien race to claim the Mantle of Ascendancy!",
@@ -38,7 +38,7 @@
       "/placeholder.svg?height=400&width=600",
       "/placeholder.svg?height=400&width=600"
     ],
-    "status": "testing phase",
+    "status": "Testing Phase",
     "releaseDate": "Upcoming",
     "platforms": ["Tabletop", "Gamefound", "DriveThru RPG"],
     "synopsis": "Will you survive Haven City's dark secrets, or will the city claim another victim?",
@@ -62,7 +62,7 @@
       "/placeholder.svg?height=400&width=600",
       "/placeholder.svg?height=400&width=600"
     ],
-    "status": "in-development",
+    "status": "In Development",
     "platforms": ["Tabletop", "Gamefound", "DriveThru RPG"],
     "synopsis": "Can you truly understand what it means to be alien—and in doing so, discover who you really are?",
     "genre": ["RPG", "Therapeutic", "Space Opera", "Narrative"],
@@ -88,7 +88,7 @@
       "/placeholder.svg?height=400&width=600",
       "/placeholder.svg?height=400&width=600"
     ],
-    "status": "in-development",
+    "status": "In Development",
     "releaseDate": "Upcoming",
     "platforms": ["Tabletop", "Gamefound", "Print-and-Play"],
     "synopsis": "Will your squad survive the mission when you're outnumbered, outgunned, but not outmaneuvered?",
@@ -113,7 +113,7 @@
       "/placeholder.svg?height=400&width=600",
       "/placeholder.svg?height=400&width=600"
     ],
-    "status": "in-development",
+    "status": "In Development",
     "releaseDate": "Upcoming",
     "platforms": ["Tabletop", "Gamefound"],
     "synopsis": "Will your team manage to solve escalating problems endangering your spaceship?",
