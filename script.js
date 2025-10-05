@@ -292,8 +292,8 @@ function populateGamesGallery(games) {
     // Clear existing content
     gamesGallery.innerHTML = '';
     
-    // Sort games by world priority
-    const sortedGames = sortGamesByWorld(games);
+    // Sort games by distribution order
+    const sortedGames = sortGamesByDistributionOrder(games);
     
     sortedGames.forEach(game => {
         const gameCard = createGameCard(game);
@@ -301,25 +301,14 @@ function populateGamesGallery(games) {
     });
 }
 
-// Sort games by world priority, then alphabetically by title within each world
-function sortGamesByWorld(games) {
-    const worldPriority = {
-        'the-age-of-rika': 1,
-        'haven-world': 2,
-        'atomic-horizon': 3
-    };
-    
+// Sort games by distribution order
+function sortGamesByDistributionOrder(games) {
     return games.sort((a, b) => {
-        const priorityA = worldPriority[a.world] || 999; // Unknown worlds go last
-        const priorityB = worldPriority[b.world] || 999;
+        const orderA = a.distributionOrder || 999; // Games without order go last
+        const orderB = b.distributionOrder || 999;
         
-        // First sort by world priority
-        if (priorityA !== priorityB) {
-            return priorityA - priorityB;
-        }
-        
-        // If same world, sort alphabetically by title
-        return a.title.localeCompare(b.title);
+        // Sort by distribution order
+        return orderA - orderB;
     });
 }
 
@@ -375,12 +364,30 @@ function createGameCard(game) {
 function populateGameGallery(galleryContainer, galleryImages, gameTitle) {
     galleryContainer.innerHTML = '';
     
-    galleryImages.forEach((imagePath, index) => {
+    // Filter out placeholder images that don't exist
+    const validImages = galleryImages.filter(imagePath => {
+        // Skip placeholder images
+        return !imagePath.includes('placeholder.svg') && !imagePath.includes('placeholder.jpg');
+    });
+    
+    // If no valid images, don't populate the gallery
+    if (validImages.length === 0) {
+        return;
+    }
+    
+    validImages.forEach((imagePath, index) => {
         const galleryImage = document.createElement('img');
         const fullImagePath = imagePath.startsWith('/') ? imagePath : `content/images${imagePath}`;
         galleryImage.src = fullImagePath;
         galleryImage.alt = `${gameTitle} - Gallery Image ${index + 1}`;
         galleryImage.className = 'gallery-image';
+        
+        // Handle image load errors
+        galleryImage.onerror = () => {
+            console.warn(`Failed to load gallery image: ${fullImagePath}`);
+            galleryImage.style.display = 'none';
+        };
+        
         galleryContainer.appendChild(galleryImage);
     });
     

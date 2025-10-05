@@ -59,15 +59,20 @@ nav {
     font-weight: 600;
 }
 
+.logo span {
+    font-family: 'Cinzel', serif;
+    font-weight: 500;
+}
+
 .logo-icon {
-    width: 32px;
-    height: 32px;
-    background: var(--accent-teal);
-    border-radius: 8px;
+    width: 48px;
+    height: 48px;
+    /*background: var(--accent-teal);*/
+    /*border-radius: 8px;*/
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--dark-bg);
+    /*color: var(--dark-bg);*/
     font-weight: bold;
 }
 
@@ -88,7 +93,7 @@ nav {
     color: var(--text-secondary);
     text-decoration: none;
     transition: color 0.3s;
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 
 .nav-links a:hover {
@@ -114,7 +119,7 @@ nav {
 /* Hero Section with Stacked Cards */
 .hero {
     position: relative;
-    min-height: 75vh;
+    min-height: 50rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -291,7 +296,7 @@ nav {
 
 /* Artist Banner */
 .artist-banner {
-    background: linear-gradient(135deg, rgba(110, 231, 183, 0.1), rgba(94, 234, 212, 0.1));
+    background: linear-gradient(135deg, rgba(110, 231, 183, 0.2), rgba(94, 234, 212, 0.2));
     padding: 2rem 5%;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
@@ -313,8 +318,10 @@ nav {
 }
 
 .artist-banner p {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.6;
 }
 
 .social-links {
@@ -377,7 +384,7 @@ section {
 /* Featured Games Gallery */
 .games-gallery-wrapper {
     position: relative;
-    max-width: 1200px;
+    max-width: 75rem;
     margin: 0 auto;
 }
 
@@ -507,12 +514,13 @@ section {
     right: 10px;
 }
 
-/* Show gallery on hover */
-.game-card:hover .game-gallery {
+/* Show gallery on hover - only if gallery has images */
+.game-card:hover .game-gallery:not(:empty) {
     display: flex;
 }
 
-.game-card:hover .game-card-image > img:first-child {
+/* Only hide main image when gallery is visible and has content */
+.game-card:hover .game-gallery:not(:empty) ~ img:first-child {
     opacity: 0;
 }
 
@@ -548,17 +556,8 @@ section {
     transform: translateY(-2px);
 }
 
-/* Newsletter Section */
-.newsletter-section {
-    padding: 2rem 5% 4rem 5%;
-    background: var(--card-bg);
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-}
-
-.newsletter-container {
-    max-width: 600px;
-    margin: 0 auto;
+/* Footer Newsletter */
+.footer-newsletter {
     text-align: center;
 }
 
@@ -582,6 +581,8 @@ section {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
+    /*max-width: 400px;*/
+    padding-top: 1rem;
 }
 
 .newsletter-form input[type="email"] {
@@ -640,18 +641,31 @@ section {
 
 /* Footer */
 footer {
-    background: var(--dark-bg);
-    padding: 4rem 5% 2rem;
+    margin: 0 auto;
+    padding: 2rem 5% 2rem 5%;
+    background: var(--card-bg);
     border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-main {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 4rem;
+    margin-bottom: 2.5rem;
+    align-items: center;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .footer-content {
-    max-width: 1400px;
-    margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.5fr 2fr;
+    grid-template-columns: 40% 60%;
     gap: 4rem;
-    margin-bottom: 3rem;
+    align-items: center;
 }
 
 .footer-branding .logo {
@@ -667,11 +681,11 @@ footer {
     display: grid;
     grid-template-columns: repeat(2, 200px);
     gap: 2rem;
-    justify-self: end;
+    justify-self: center;
 }
 
-.footer-column h4 {
-    font-size: 0.95rem;
+.footer-column h3 {
+    font-size: 1.35rem;
     margin-bottom: 1rem;
     color: var(--accent-green);
 }
@@ -683,9 +697,9 @@ footer {
 }
 
 .footer-column a {
-    color: var(--text-secondary);
+    color: var(--text-primary);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     transition: color 0.3s;
 }
 
@@ -694,7 +708,7 @@ footer {
 }
 
 .footer-bottom {
-    max-width: 1400px;
+    width: 100%;
     margin: 0 auto;
     padding-top: 2rem;
     border-top: 1px solid var(--border-color);
@@ -728,7 +742,9 @@ footer {
 .worlds-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    max-width: 75rem;
     gap: 2rem;
+    margin: 0 auto;
 }
 
 .world-card {
@@ -833,9 +849,14 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .footer-content {
+    .footer-main {
         grid-template-columns: 1fr;
         gap: 3rem;
+        margin-bottom: 3rem;
+    }
+
+    .footer-newsletter {
+        text-align: center;
     }
 
     .footer-links {
@@ -892,6 +913,24 @@ footer {
 
     .nav-links {
         display: none;
+    }
+
+    footer {
+        padding: 2rem 5% 2rem 5%;
+    }
+
+    .footer-main {
+        margin-bottom: 2rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 60% 40%;
+        gap: 0rem;
+    }
+
+    .footer-newsletter {
+        text-align: center;
+        padding-left: 2rem;
     }
 
     .footer-links {
