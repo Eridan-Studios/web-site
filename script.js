@@ -18,7 +18,7 @@ async function loadCarouselImages() {
         console.error('Error loading carousel images:', error);
         // Fallback: use default images
         const fallbackImages = [
-            'https://eridangames.com/Maro.png',
+            'https://eridangames.com/Maro1.png',
             'https://eridangames.com/Liguni.Zelen.png',
             'https://eridangames.com/Dindra.Zemlja.png'
         ];
