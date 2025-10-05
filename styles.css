@@ -955,7 +955,7 @@ footer {
 
 /* About Hero */
 .about-hero {
-    padding: 6rem 5% 4rem;
+    padding: 5rem 5% 6rem 5%;
     text-align: center;
     border-bottom: 1px solid var(--border-color);
     background: linear-gradient(180deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
