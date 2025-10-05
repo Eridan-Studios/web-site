@@ -551,8 +551,8 @@ function createWorldCard(world) {
     const gameCount = world.games ? world.games.length : 0;
     gamesCount.textContent = `🎮 ${gameCount} game${gameCount !== 1 ? 's' : ''}`;
     
-    // Set description
-    cardDescription.textContent = world.description;
+    // Set description (use tagline if available, otherwise fall back to description)
+    cardDescription.textContent = world.tagline || world.description;
     
     // Set footer link (you can customize this URL structure)
     cardFooter.onclick = () => {
