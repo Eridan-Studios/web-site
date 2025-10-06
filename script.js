@@ -1,19 +1,20 @@
 // ===== CAROUSEL =====
-const CAROUSEL_JSON_URL = 'content/carousel.json';
+// Carousel images data (embedded to avoid CORS issues when opening file directly)
+const CAROUSEL_IMAGES = [
+    'rika-akvira-maro-1.png',
+    'rika-dindra-zemlja.png',
+    'rika-liguni-zeleni.png'
+];
+
 let track, slides, nextBtn, prevBtn, indicators;
 let currentSlide = 0;
 let totalSlides = 0;
 let autoplayInterval;
 
-// Load carousel images from JSON
-async function loadCarouselImages() {
+// Load carousel images (now using embedded data)
+function loadCarouselImages() {
     try {
-        const response = await fetch(CAROUSEL_JSON_URL);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const images = await response.json();
-        populateCarousel(images);
+        populateCarousel(CAROUSEL_IMAGES);
     } catch (error) {
         console.error('Error loading carousel images:', error);
         // Fallback: use default images
@@ -30,6 +31,12 @@ async function loadCarouselImages() {
 function populateCarousel(images) {
     track = document.getElementById('carousel-track');
     const indicatorsContainer = document.getElementById('carousel-indicators');
+    
+    // Check if carousel elements exist (only on index page)
+    if (!track || !indicatorsContainer) {
+        console.log('Carousel elements not found - skipping carousel initialization');
+        return;
+    }
     
     // Clear existing content
     track.innerHTML = '';
@@ -165,106 +172,9 @@ document.addEventListener('keydown', (e) => {
 });
 
 // Initialize carousel when DOM is loaded
-document.addEventListener('DOMContentLoaded', loadCarouselImages);
-
-// ===== STARFIELD =====
-const canvas = document.getElementById('starfield');
-const ctx = canvas.getContext('2d');
-
-let stars = [];
-let animationFrameId;
-
-// Set canvas size
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    initStars();
-}
-
-// Star class
-class Star {
-    constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.radius = Math.random() * 1.5;
-        this.opacity = Math.random();
-        this.twinkleSpeed = Math.random() * 0.02 + 0.005;
-        this.velocityX = (Math.random() - 0.5) * 0.1;
-        this.velocityY = (Math.random() - 0.5) * 0.1;
-        this.maxOpacity = Math.random() * 0.5 + 0.5;
-        this.minOpacity = Math.random() * 0.2;
-    }
-
-    update() {
-        // Twinkle effect
-        this.opacity += this.twinkleSpeed;
-        if (this.opacity > this.maxOpacity || this.opacity < this.minOpacity) {
-            this.twinkleSpeed *= -1;
-        }
-
-        // Subtle movement
-        this.x += this.velocityX;
-        this.y += this.velocityY;
-
-        // Wrap around screen
-        if (this.x < 0) this.x = canvas.width;
-        if (this.x > canvas.width) this.x = 0;
-        if (this.y < 0) this.y = canvas.height;
-        if (this.y > canvas.height) this.y = 0;
-    }
-
-    draw() {
-        ctx.save();
-        ctx.globalAlpha = this.opacity;
-        ctx.fillStyle = '#ffffff';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Add glow for larger stars
-        if (this.radius > 1) {
-            ctx.globalAlpha = this.opacity * 0.3;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius * 2, 0, Math.PI * 2);
-            ctx.fill();
-        }
-        
-        ctx.restore();
-    }
-}
-
-// Initialize stars
-function initStars() {
-    stars = [];
-    // Adjust star count based on screen size
-    const starCount = Math.floor((canvas.width * canvas.height) / 3000);
-    for (let i = 0; i < starCount; i++) {
-        stars.push(new Star());
-    }
-}
-
-// Animation loop
-function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    stars.forEach(star => {
-        star.update();
-        star.draw();
-    });
-    
-    animationFrameId = requestAnimationFrame(animate);
-}
-
-// Handle window resize
-window.addEventListener('resize', () => {
-    cancelAnimationFrame(animationFrameId);
-    resizeCanvas();
-    animate();
+document.addEventListener('DOMContentLoaded', () => {
+    loadCarouselImages();
 });
-
-// Initialize
-resizeCanvas();
-animate();
 
 // ===== GAMES GALLERY =====
 const GAMES_JSON_URL = 'https://eridan-studios.github.io/web-site/content/games.json';
@@ -283,12 +193,20 @@ async function loadGames() {
     } catch (error) {
         console.error('Error loading games:', error);
         // Fallback: show error message or placeholder content
-        gamesGallery.innerHTML = '<p>Unable to load games. Please try again later.</p>';
+        if (gamesGallery) {
+            gamesGallery.innerHTML = '<p>Unable to load games. Please try again later.</p>';
+        }
     }
 }
 
 // Populate the games gallery with data from JSON
 function populateGamesGallery(games) {
+    // Check if games gallery exists (only on index page)
+    if (!gamesGallery) {
+        console.log('Games gallery not found - skipping games initialization');
+        return;
+    }
+    
     // Clear existing content
     gamesGallery.innerHTML = '';
     
@@ -494,12 +412,20 @@ async function loadWorlds() {
     } catch (error) {
         console.error('Error loading worlds:', error);
         // Fallback: show error message or placeholder content
-        worldsGrid.innerHTML = '<p>Unable to load worlds. Please try again later.</p>';
+        if (worldsGrid) {
+            worldsGrid.innerHTML = '<p>Unable to load worlds. Please try again later.</p>';
+        }
     }
 }
 
 // Populate the worlds grid with data from JSON
 function populateWorldsGrid(worlds) {
+    // Check if worlds grid exists (only on index page)
+    if (!worldsGrid) {
+        console.log('Worlds grid not found - skipping worlds initialization');
+        return;
+    }
+    
     // Clear existing content
     worldsGrid.innerHTML = '';
     
@@ -536,13 +462,18 @@ function sortWorldsByName(worlds) {
 
 // Create a world card element from world data
 function createWorldCard(world) {
+    // Determine which template to use based on current page
+    const isWorldsPage = window.location.pathname.includes('worlds.html');
+    const template = isWorldsPage ? 
+        document.getElementById('world-card-template-worlds') : 
+        worldCardTemplate;
+    
     // Clone the template
-    const worldCard = worldCardTemplate.content.cloneNode(true);
+    const worldCard = template.content.cloneNode(true);
     
     // Get elements from the cloned template
     const cardImage = worldCard.querySelector('.world-card-image img');
     const cardTitle = worldCard.querySelector('.world-card-content h3');
-    const gamesCount = worldCard.querySelector('.games-count');
     const cardDescription = worldCard.querySelector('.world-card-content p');
     const cardFooter = worldCard.querySelector('.world-card-footer');
     
@@ -554,20 +485,151 @@ function createWorldCard(world) {
     // Set title
     cardTitle.textContent = world.name;
     
-    // Set games count
-    const gameCount = world.games ? world.games.length : 0;
-    gamesCount.textContent = `🎮 ${gameCount} game${gameCount !== 1 ? 's' : ''}`;
-    
     // Set description (use tagline if available, otherwise fall back to description)
     cardDescription.textContent = world.tagline || world.description;
+    
+    // Handle games count for index page or games grid for worlds page
+    if (isWorldsPage) {
+        const gamesGrid = worldCard.querySelector('.world-games-grid');
+        if (gamesGrid) {
+            // Populate games grid asynchronously
+            populateWorldGamesGrid(gamesGrid, world.games || []);
+        }
+    } else {
+        const gamesCount = worldCard.querySelector('.games-count');
+        if (gamesCount) {
+            const gameCount = world.games ? world.games.length : 0;
+            gamesCount.textContent = `🎮 ${gameCount} game${gameCount !== 1 ? 's' : ''}`;
+        }
+    }
     
     // Set footer link (you can customize this URL structure)
     cardFooter.onclick = () => {
         window.location.href = `#world-${world.slug}`;
     };
-    
+
     return worldCard;
+}
+
+// Populate games grid within a world card
+async function populateWorldGamesGrid(gamesGrid, gameIds) {
+    // Clear existing content
+    gamesGrid.innerHTML = '';
+    
+    if (!gameIds || gameIds.length === 0) {
+        return;
+    }
+    
+    try {
+        // Load games data to get full game information
+        const games = await loadGamesData();
+        
+        // Filter games that belong to this world
+        const worldGames = games.filter(game => gameIds.includes(game.id));
+        
+        // Sort games by distribution order
+        worldGames.sort((a, b) => (a.distributionOrder || 999) - (b.distributionOrder || 999));
+        
+        // Create game items
+        worldGames.forEach(game => {
+            const gameItem = document.createElement('div');
+            gameItem.className = 'world-game-item';
+            
+            const gameImage = document.createElement('div');
+            gameImage.className = 'world-game-image';
+            
+            const img = document.createElement('img');
+            const imagePath = game.image.startsWith('/') ? game.image : `content/images/${game.image}`;
+            img.src = imagePath;
+            img.alt = game.title;
+            
+            const gameTitle = document.createElement('div');
+            gameTitle.className = 'world-game-title';
+            gameTitle.textContent = game.title;
+            
+            gameImage.appendChild(img);
+            gameItem.appendChild(gameImage);
+            gameItem.appendChild(gameTitle);
+            
+            gamesGrid.appendChild(gameItem);
+        });
+    } catch (error) {
+        console.error('Error loading games data for world:', error);
+    }
+}
+
+// Load games data from JSON
+async function loadGamesData() {
+    try {
+        const response = await fetch('content/games.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error loading games data:', error);
+        return [];
+    }
 }
 
 // Initialize worlds grid when DOM is loaded
 document.addEventListener('DOMContentLoaded', loadWorlds);
+
+// ===== MOBILE NAVIGATION =====
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const body = document.body;
+    
+    // No overlay - using CSS effects instead
+    
+    // Toggle mobile menu
+    function toggleMobileMenu() {
+        mobileMenuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        body.classList.toggle('menu-open');
+    }
+    
+    // Close mobile menu
+    function closeMobileMenu() {
+        mobileMenuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        body.classList.remove('menu-open');
+    }
+    
+    // Event listeners
+    mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+    
+    // Close menu when clicking on nav links
+    navLinks.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+            closeMobileMenu();
+        }
+    });
+    
+    // Close menu when clicking outside navigation
+    document.addEventListener('click', function(e) {
+        // Check if menu is open
+        if (navLinks.classList.contains('active')) {
+            // Check if click is outside navigation area
+            const nav = document.querySelector('nav');
+            if (!nav.contains(e.target)) {
+                closeMobileMenu();
+            }
+        }
+    });
+    
+    // Close menu on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+            closeMobileMenu();
+        }
+    });
+    
+    // Close menu on window resize (if resizing to desktop)
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+            closeMobileMenu();
+        }
+    });
+});

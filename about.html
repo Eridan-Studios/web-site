@@ -23,10 +23,14 @@
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="index.html#games">Games</a></li>
-            <li><a href="index.html#worlds">Worlds</a></li>
+            <li><a href="worlds.html">Worlds</a></li>
             <li><a href="about.html">About</a></li>
         </ul>
-        <a href="#community" class="cta-primary">Join our Discord</a>
+        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
 
     <!-- About Hero -->
@@ -156,11 +160,9 @@
     <!-- Footer -->
     <footer>
         <div class="footer-main">
-            <div></div> <!-- Empty left column for spacing -->
             <div class="footer-content">
                 <div class="footer-newsletter">
-                    <!--<div class="newsletter-icon">📧</div>-->
-                    <h2>Stay Updated</h2>
+                    <h2 id="newsletter">Stay Updated</h2>
                     <p>Get the latest news about our games and worlds.</p>
                     <form class="newsletter-form">
                         <input type="email" placeholder="Enter your email address" required>
@@ -173,25 +175,23 @@
                 </div>
                 
                 <div class="footer-links">
-                    
                     <div class="footer-column">
                         <h3>Studio</h3>
-                        <a href="">Home</a>
-                        <a href="#games">Games</a>
-                        <a href="#worlds">Worlds</a>
-                        <a href="#">About Us</a>
+                        <a href="index.html" class="cta-tertiary">Home</a>
+                        <a href="index.html#games" class="cta-tertiary">Games</a>
+                        <a href="worlds.html" class="cta-tertiary">Worlds</a>
+                        <a href="about.html" class="cta-tertiary">About Us</a>
                     </div>
                     
                     <div class="footer-column">
                         <h3>Community</h3>
-                        <a href="#">Discord</a>
-                        <a href="#">YouTube</a>
-                        <a href="#">Gamefound</a>
-                        <a href="#">Twitter</a>
+                        <a href="https://discord.gg/D9cjBrynr2" class="cta-tertiary" target="_blank">Discord</a>
+                        <a href="#" class="cta-tertiary">YouTube</a>
+                        <a href="#" class="cta-tertiary">Gamefound</a>
+                        <a href="#" class="cta-tertiary">Twitter</a>
                     </div>
                 </div>
             </div>
-            <div></div> <!-- Empty right column for spacing -->
         </div>
         
         <div class="footer-bottom">

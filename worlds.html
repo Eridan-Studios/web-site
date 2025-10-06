@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eridan Games - Where Shores Meet Stars</title>
+    <title>Worlds - Eridan Games Studio</title>
     <link rel="icon" type="image/png" href="content/images/eridan-logo-2.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
         </div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="#games">Games</a></li>
+            <li><a href="index.html#games">Games</a></li>
             <li><a href="worlds.html">Worlds</a></li>
             <li><a href="about.html">About</a></li>
         </ul>
@@ -33,63 +33,16 @@
         </button>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Where shores meet <span class="accent">stars</span></h1>
-                <p>Worlds filled with wonder, challenge, and contrast where your choices shape the narrative.</p>
-                <div class="hero-buttons">
-                    <a href="https://discord.gg/D9cjBrynr2" class="cta-primary" target="_blank">Join our Discord</a>
-                    <a href="#newsletter" class="cta-primary">Subscribe to Newsletter</a>
-                </div>
-            </div>
-            <div class="hero-carousel">
-                <div class="carousel-track" id="carousel-track">
-                    <!-- Carousel slides will be dynamically populated here -->
-                </div>
-                <button class="carousel-btn prev" aria-label="Previous">‹</button>
-                <button class="carousel-btn next" aria-label="Next">›</button>
-                <div class="carousel-indicators" id="carousel-indicators">
-                    <!-- Carousel indicators will be dynamically populated here -->
-                </div>
-            </div>
+    <!-- Worlds Hero -->
+    <section class="about-hero">
+        <div class="about-hero-content">
+            <h1>Our Worlds</h1>
+            <p>Each world we create is a universe unto itself, filled with rich, contrastive lore, compelling characters, and endless possibilities for adventure.</p>
         </div>
     </section>
 
-    <!-- Artist Banner -->
-    <div class="artist-banner">
-        <div class="artist-banner-content">
-            <h2>We Celebrate <span class="accent">Human Artistry</span>!</h2>
-            <p>Our games feature 100% human-created art. All AI images you see here are placeholders until original art is complete.</p>
-        </div>
-    </div>
-
-    <!-- Featured Games -->
-    <section id="games">
-        <div class="section-header">
-            <h2>Featured Games</h2>
-            <p>Worlds in development, stories in motion.</p>
-        </div>
-        <div class="games-gallery-wrapper">
-            <div class="games-gallery" id="games-gallery">
-                <!-- Game cards will be dynamically populated here -->
-            </div>
-        </div>
-        <div class="cta-center">
-            <a href="#" class="cta-secondary">View All Games →</a>
-        </div>
-    </section>
-
-    <!-- Divider -->
-    <div class="section-divider"></div>
-
-    <!-- Worlds -->
-    <section id="worlds">
-        <div class="section-header">
-            <h2>Our Worlds</h2>
-            <p>We build authentic, boldly contrasted worlds, where every layer invites discovery.</p>
-        </div>
+    <!-- Worlds Section -->
+    <section class="worlds-section">
         <div class="worlds-grid" id="worlds-grid">
             <!-- World cards will be dynamically populated here -->
         </div>
@@ -116,7 +69,7 @@
                     <div class="footer-column">
                         <h3>Studio</h3>
                         <a href="index.html" class="cta-tertiary">Home</a>
-                        <a href="#games" class="cta-tertiary">Games</a>
+                        <a href="index.html#games" class="cta-tertiary">Games</a>
                         <a href="worlds.html" class="cta-tertiary">Worlds</a>
                         <a href="about.html" class="cta-tertiary">About Us</a>
                     </div>
@@ -137,28 +90,8 @@
         </div>
     </footer>
 
-    <!-- Game Card Template -->
-    <template id="game-card-template">
-        <a href="#" class="game-card">
-            <div class="game-card-image">
-                <img src="" alt="">
-                <div class="status-badge"></div>
-                <div class="game-gallery" style="display: none;">
-                    <!-- Gallery images will be populated dynamically -->
-                </div>
-            </div>
-            <div class="game-card-content">
-                <h3></h3>
-                <p></p>
-                <div class="game-tags">
-                    <!-- Tags will be populated dynamically -->
-                </div>
-            </div>
-        </a>
-    </template>
-
-    <!-- World Card Template -->
-    <template id="world-card-template">
+    <!-- World Card Template for Worlds Page -->
+    <template id="world-card-template-worlds">
         <div class="world-card">
             <div class="world-card-image">
                 <img src="" alt="">
@@ -166,9 +99,28 @@
             <div class="world-card-content">
                 <div class="world-card-header">
                     <h3></h3>
-                    <span class="games-count"></span>
                 </div>
                 <p></p>
+                <div class="world-games-grid">
+                    <div class="world-game-item">
+                        <div class="world-game-image">
+                            <img src="content/images/rika-liguni-zeleni.png" alt="Rika: The Board Game">
+                        </div>
+                        <div class="world-game-title">Rika: The Board Game</div>
+                    </div>
+                    <div class="world-game-item">
+                        <div class="world-game-image">
+                            <img src="content/images/rika-dindra-zemlja.png" alt="Rika: Aliens as Allies">
+                        </div>
+                        <div class="world-game-title">Rika: Aliens as Allies</div>
+                    </div>
+                    <div class="world-game-item">
+                        <div class="world-game-image">
+                            <img src="content/images/game-rika-red-alert.png" alt="Rika: Red Alert">
+                        </div>
+                        <div class="world-game-title">Rika: Red Alert</div>
+                    </div>
+                </div>
             </div>
             <div class="world-card-footer">
                 Explore the world →
@@ -176,9 +128,7 @@
         </div>
     </template>
 
-
     <script src="starfield.js"></script>
-    <script src="script.js"></script>
-
+    <script src="worlds.js"></script>
 </body>
 </html>
