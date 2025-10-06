@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="content/images/eridan-logo-2.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -26,7 +26,6 @@
             <li><a href="#worlds">Worlds</a></li>
             <li><a href="about.html">About</a></li>
         </ul>
-        <a href="#community" class="cta-primary">Join our Discord</a>
     </nav>
 
     <!-- Hero Section -->
@@ -35,7 +34,10 @@
             <div class="hero-text">
                 <h1>Where shores meet <span class="accent">stars</span></h1>
                 <p>Worlds filled with wonder, challenge, and contrast where your choices shape the narrative.</p>
-                <a href="#community" class="cta-primary">Join Our Community</a>
+                <div class="hero-buttons">
+                    <a href="https://discord.gg/D9cjBrynr2" class="cta-primary" target="_blank">Join our Discord</a>
+                    <a href="#newsletter" class="cta-primary">Subscribe to Newsletter</a>
+                </div>
             </div>
             <div class="hero-carousel">
                 <div class="carousel-track" id="carousel-track">
@@ -55,11 +57,6 @@
         <div class="artist-banner-content">
             <h2>We Celebrate <span class="accent">Human Artistry</span>!</h2>
             <p>Our games feature 100% human-created art. All AI images you see here are placeholders until original art is complete.</p>
-            <div class="social-links">
-                <a href="#" class="social-btn">💬 Join Discord</a>
-                <a href="#" class="social-btn">📧 Subscribe</a>
-                <a href="#" class="social-btn">▶️ YouTube</a>
-            </div>
         </div>
     </div>
 
@@ -74,7 +71,9 @@
                 <!-- Game cards will be dynamically populated here -->
             </div>
         </div>
-        <a href="#" class="view-all-btn">View All Games →</a>
+        <div class="cta-center">
+            <a href="#" class="cta-secondary">View All Games →</a>
+        </div>
     </section>
 
     <!-- Divider -->
@@ -98,7 +97,7 @@
             <div class="footer-content">
                 <div class="footer-newsletter">
                     <!--<div class="newsletter-icon">📧</div>-->
-                    <h2>Stay Updated</h2>
+                    <h2 id="newsletter">Stay Updated</h2>
                     <p>Get the latest news about our games and worlds.</p>
                     <form class="newsletter-form">
                         <input type="email" placeholder="Enter your email address" required>
@@ -114,18 +113,18 @@
                     
                     <div class="footer-column">
                         <h3>Studio</h3>
-                        <a href="">Home</a>
-                        <a href="#games">Games</a>
-                        <a href="#worlds">Worlds</a>
-                        <a href="#">About Us</a>
+                        <a href="" class="cta-tertiary">Home</a>
+                        <a href="#games" class="cta-tertiary">Games</a>
+                        <a href="#worlds" class="cta-tertiary">Worlds</a>
+                        <a href="#" class="cta-tertiary">About Us</a>
                     </div>
                     
                     <div class="footer-column">
                         <h3>Community</h3>
-                        <a href="#">Discord</a>
-                        <a href="#">YouTube</a>
-                        <a href="#">Gamefound</a>
-                        <a href="#">Twitter</a>
+                        <a href="https://discord.gg/D9cjBrynr2" class="cta-tertiary" target="_blank">Discord</a>
+                        <a href="#" class="cta-tertiary">YouTube</a>
+                        <a href="#" class="cta-tertiary">Gamefound</a>
+                        <a href="#" class="cta-tertiary">Twitter</a>
                     </div>
                 </div>
             </div>
@@ -175,6 +174,7 @@
             </div>
         </div>
     </template>
+
 
     <script src="script.js"></script>
 
