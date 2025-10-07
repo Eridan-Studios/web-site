@@ -85,12 +85,14 @@ async function populateWorldPage(world) {
     await populateWorldGames(world.games || []);
 }
 
-// Populate features table
+// Populate features carousel
 function populateFeaturesCards(pillars) {
-    const featuresTable = document.getElementById('features-table');
+    const featuresTrack = document.getElementById('features-track');
+    const featuresIndicators = document.getElementById('features-indicators');
     
     // Clear existing content
-    featuresTable.innerHTML = '';
+    featuresTrack.innerHTML = '';
+    featuresIndicators.innerHTML = '';
     
     if (!pillars || pillars.length === 0) {
         // Hide the entire features section if no pillars
@@ -98,19 +100,124 @@ function populateFeaturesCards(pillars) {
         return;
     }
     
-    // Create feature rows
+    // Create feature slides
     pillars.forEach((pillar, index) => {
-        const row = document.createElement('div');
-        row.className = 'feature-row';
+        const slide = document.createElement('div');
+        slide.className = 'carousel-slide';
+        if (index === 0) slide.classList.add('active');
         
-        row.innerHTML = `
-            <div class="feature-title">${pillar.title}</div>
-            <div class="feature-description">
-                ${pillar.text.split('\n\n').map(paragraph => `<p>${paragraph}</p>`).join('')}
+        slide.innerHTML = `
+            <div class="feature-content">
+                <h3 class="feature-title">${pillar.title}</h3>
+                <div class="feature-description">
+                    ${pillar.text.split('\n\n').map(paragraph => `<p>${paragraph}</p>`).join('')}
+                </div>
             </div>
         `;
         
-        featuresTable.appendChild(row);
+        featuresTrack.appendChild(slide);
+        
+        // Create numbered indicator
+        const indicator = document.createElement('button');
+        indicator.className = 'carousel-indicator';
+        if (index === 0) indicator.classList.add('active');
+        indicator.textContent = index + 1;
+        indicator.setAttribute('aria-label', `Go to feature ${index + 1}`);
+        
+        featuresIndicators.appendChild(indicator);
+    });
+    
+    // Initialize carousel
+    initializeFeaturesCarousel();
+}
+
+// Initialize features carousel functionality
+function initializeFeaturesCarousel() {
+    const track = document.getElementById('features-track');
+    const slides = track.querySelectorAll('.carousel-slide');
+    const indicators = document.querySelectorAll('#features-indicators .carousel-indicator');
+    const prevBtn = document.getElementById('features-prev');
+    const nextBtn = document.getElementById('features-next');
+    
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    
+    if (totalSlides === 0) return;
+    
+    // Function to show specific slide with smooth transition
+    function showSlide(index, direction = 'next') {
+        if (index === currentIndex) return;
+        
+        const currentSlide = slides[currentIndex];
+        const nextSlide = slides[index];
+        
+        // Add slide-out class to current slide
+        if (direction === 'next') {
+            currentSlide.classList.add('slide-out-left');
+        } else {
+            currentSlide.classList.add('slide-out-right');
+        }
+        
+        // Remove active class from current slide
+        currentSlide.classList.remove('active');
+        
+        // Position and show next slide
+        if (direction === 'next') {
+            nextSlide.classList.add('slide-in-right');
+        } else {
+            nextSlide.classList.add('slide-in-left');
+        }
+        
+        // Update indicators
+        indicators.forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === index);
+        });
+        
+        // Clean up classes after transition
+        setTimeout(() => {
+            currentSlide.classList.remove('slide-out-left', 'slide-out-right', 'active');
+            nextSlide.classList.remove('slide-in-left', 'slide-in-right');
+            nextSlide.classList.add('active');
+        }, 500);
+        
+        currentIndex = index;
+    }
+    
+    // Function to go to next slide
+    function nextSlide() {
+        const nextIndex = (currentIndex + 1) % totalSlides;
+        showSlide(nextIndex, 'next');
+    }
+    
+    // Function to go to previous slide
+    function prevSlide() {
+        const prevIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        showSlide(prevIndex, 'prev');
+    }
+    
+    // Add event listeners
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+    
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            const direction = index > currentIndex ? 'next' : 'prev';
+            showSlide(index, direction);
+        });
+    });
+    
+    // Add keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (document.querySelector('.world-features').contains(document.activeElement) || 
+            document.querySelector('.world-features').contains(e.target)) {
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                nextSlide();
+            }
+        }
     });
 }
 
