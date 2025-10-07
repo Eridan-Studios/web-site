@@ -244,8 +244,8 @@ function createGameCard(game) {
     const tagsContainer = gameCard.querySelector('.game-tags');
     const galleryContainer = gameCard.querySelector('.game-gallery');
     
-    // Set card link (you can customize this URL structure)
-    cardLink.href = `#game-${game.slug}`;
+    // Set card link to individual game page
+    cardLink.href = `game.html?game=${game.slug}`;
     
     // Set image source and alt text
     const imagePath = game.image.startsWith('/') ? game.image : `content/images/${game.image}`;
@@ -486,7 +486,9 @@ function createWorldCard(world) {
     cardTitle.textContent = world.name;
     
     // Set description (use tagline if available, otherwise fall back to description)
-    cardDescription.textContent = world.tagline || world.description;
+    // Convert newlines to breaks and use innerHTML to render HTML content
+    const descriptionText = world.tagline || world.description;
+    cardDescription.innerHTML = descriptionText.replace(/\n/g, '<br>');
     
     // Handle games count for index page or games grid for worlds page
     if (isWorldsPage) {

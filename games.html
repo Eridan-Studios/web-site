@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Worlds - Eridan Games Studio</title>
+    <title>Games - Eridan Games Studio</title>
     <link rel="icon" type="image/png" href="content/images/eridan-logo-2.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,18 +34,18 @@
         </button>
     </nav>
 
-    <!-- Worlds Hero -->
+    <!-- Games Hero -->
     <section class="page-hero">
         <div class="page-hero-content">
-            <h1>Our Worlds</h1>
-            <p>Each world we create is a universe unto itself, filled with rich, contrastive lore, compelling characters, and endless possibilities for adventure.</p>
+            <h1>Our Games</h1>
+            <p>Discover our collection of immersive gaming experiences, each crafted with passion and designed to transport you to new worlds of adventure.</p>
         </div>
     </section>
 
-    <!-- Worlds Section -->
-    <section class="worlds-section">
-        <div class="worlds-grid" id="worlds-grid">
-            <!-- World cards will be dynamically populated here -->
+    <!-- Games Section -->
+    <section class="games-section">
+        <div class="games-grid" id="games-grid">
+            <!-- Game cards will be dynamically populated here -->
         </div>
     </section>
 
@@ -91,28 +91,30 @@
         </div>
     </footer>
 
-    <!-- World Card Template for Worlds Page -->
-    <template id="world-card-template-worlds">
-        <div class="world-card">
-            <div class="world-card-image">
+    <!-- Game Card Template for Games Page -->
+    <template id="game-card-template-games">
+        <div class="game-card-games">
+            <div class="game-card-image">
                 <img src="" alt="">
+                <div class="status-badge"></div>
             </div>
-            <div class="world-card-content">
-                <div class="world-card-header">
-                    <h3></h3>
-                </div>
+            <div class="game-card-content">
+                <h3></h3>
                 <p></p>
-                <div class="world-card-games-grid">
-                    <!-- Game items will be dynamically populated here -->
+                <div class="game-platforms">
+                    <!-- Platforms will be populated dynamically -->
+                </div>
+                <div class="game-tags">
+                    <!-- Tags will be populated dynamically -->
                 </div>
             </div>
-            <div class="world-card-footer">
-                Explore the world →
+            <div class="game-card-footer">
+                Learn more →
             </div>
         </div>
     </template>
 
     <script src="starfield.js"></script>
-    <script src="worlds.js"></script>
+    <script src="games.js"></script>
 </body>
 </html>

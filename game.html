@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Game - Eridan Games</title>
+    <link rel="icon" type="image/png" href="content/images/eridan-logo-2.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Starfield Background -->
+    <canvas id="starfield"></canvas>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <div class="logo-icon"><img src="content/images/eridan-logo-2-transparent.png" alt="E"></div>
+            <span>Eridan Games</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="games.html">Games</a></li>
+            <li><a href="worlds.html">Worlds</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#">Wiki</a></li>
+        </ul>
+        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Game Hero Banner -->
+    <section class="game-hero page-hero">
+        <div class="game-hero-content">
+            <div class="game-hero-left">
+                <p class="game-description" id="game-description">
+                    Loading game information...
+                </p>
+                <div class="wiki-link">
+                    <a href="#" id="game-wiki-link" class="cta-secondary">📖 Learn More in the Wiki</a>
+                </div>
+            </div>
+            <div class="game-hero-right">
+                <div class="world-banner">
+                    <img id="game-banner-image" src="" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Details Section -->
+    <section class="game-details">
+        <div class="game-details-grid">
+            <div class="game-details-left">
+                <div class="synopsis-card">
+                    <h2 class="card-title">Synopsis</h2>
+                    <p id="game-synopsis">
+                        <!-- Synopsis will be populated here -->
+                    </p>
+                </div>
+                
+                <div class="screenshots-card">
+                    <h2 class="card-title">Screenshots</h2>
+                    <div class="screenshots-grid" id="screenshots-grid">
+                        <!-- Screenshots will be dynamically populated here -->
+                    </div>
+                </div>
+                
+                <div class="key-features-card">
+                    <h2 class="card-title">Key Features & Mechanics</h2>
+                    <div class="features-mechanics-grid">
+                        <div class="features-section">
+                            <h3>Features</h3>
+                            <ul id="features-list">
+                                <!-- Features will be populated here -->
+                            </ul>
+                        </div>
+                        <div class="mechanics-section">
+                            <h3>Mechanics</h3>
+                            <ul id="mechanics-list">
+                                <!-- Mechanics will be populated here -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-developers-card">
+                    <h2 class="card-title">Game Developers</h2>
+                    <div class="developers-list" id="developers-list">
+                        <!-- Developers will be populated here -->
+                    </div>
+                </div>
+                
+                <div class="world-section-card">
+                    <h2 class="card-title" id="world-section-title">Part of [World Name]</h2>
+                    <div class="world-section-content">
+                        <div class="world-image">
+                            <img id="world-section-image" src="" alt="">
+                        </div>
+                        <div class="world-info">
+                            <p id="world-description" class="world-description-text">
+                                <!-- World description will be populated here -->
+                            </p>
+                            <a href="#" id="world-explore-link" class="cta-secondary">Explore [World Name]</a>
+                            <div class="other-games">
+                                <h3>More from [World Name]</h3>
+                                <div class="other-games-list" id="other-games-list">
+                                    <!-- Other games will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="game-details-right">
+                <div class="game-info-card">
+                    <h2 class="card-title card-title-accent-green">Game Information</h2>
+                    <div class="game-info-content" id="game-info-content">
+                        <!-- Game info will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="back-to-games">
+            <a href="games.html" class="cta-tertiary">‹ Back to All Games</a>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-main">
+            <div class="footer-content">
+                <div class="footer-newsletter">
+                    <h2 id="newsletter">Stay Updated</h2>
+                    <p>Get the latest news about our games and worlds.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <label class="checkbox-label">
+                            <input type="checkbox" required>
+                            <span>I agree to receive marketing emails from Eridan Games Studio and understand I can unsubscribe at any time.</span>
+                        </label>
+                        <button type="submit" class="subscribe-btn">Subscribe to Newsletter</button>
+                    </form>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Studio</h3>
+                        <a href="index.html" class="cta-tertiary">Home</a>
+                        <a href="games.html" class="cta-tertiary">Games</a>
+                        <a href="worlds.html" class="cta-tertiary">Worlds</a>
+                        <a href="about.html" class="cta-tertiary">About Us</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Community</h3>
+                        <a href="https://discord.gg/D9cjBrynr2" class="cta-tertiary" target="_blank">Discord</a>
+                        <a href="#" class="cta-tertiary">YouTube</a>
+                        <a href="#" class="cta-tertiary">Gamefound</a>
+                        <a href="#" class="cta-tertiary">Twitter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>Eridan Games Studio. All rights reserved. 2025.</p>
+        </div>
+    </footer>
+
+    <script src="starfield.js"></script>
+    <script src="script.js"></script>
+    <script src="game-page.js"></script>
+</body>
+</html>

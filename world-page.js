@@ -61,8 +61,8 @@ async function populateWorldPage(world) {
     worldBannerImage.src = imagePath;
     worldBannerImage.alt = world.name;
     
-    // Set description - use innerHTML to render any HTML content
-    worldDescription.innerHTML = world.description;
+    // Set description - use innerHTML to render any HTML content and convert newlines to breaks
+    worldDescription.innerHTML = world.description.replace(/\n/g, '<br>');
     
     // Set wiki link if available
     if (world.wiki_url) {
@@ -276,7 +276,7 @@ function createGameCard(game) {
             <h3>${game.title}</h3>
             <p>${game.description}</p>
         </div>
-        <a href="#" class="game-card-cta">Learn More →</a>
+        <a href="game.html?game=${game.slug}" class="game-card-cta">Learn More →</a>
     `;
     
     return gameCard;

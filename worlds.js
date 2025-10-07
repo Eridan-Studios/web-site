@@ -91,8 +91,9 @@ function createWorldCard(world, template) {
     cardTitle.textContent = world.name;
     
     // Set description (use tagline if available, otherwise fall back to description)
-    // Use innerHTML to render any HTML content in the description
-    cardDescription.innerHTML = world.tagline || world.description;
+    // Use innerHTML to render any HTML content in the description and convert newlines to breaks
+    const descriptionText = world.tagline || world.description;
+    cardDescription.innerHTML = descriptionText.replace(/\n/g, '<br>');
     cardDescription.classList.add('mb-1-5');
     
     // Populate games grid
@@ -127,8 +128,9 @@ async function populateWorldGamesGrid(gamesGrid, gameIds) {
         
         // Create game items
         worldGames.forEach(game => {
-            const gameItem = document.createElement('div');
+            const gameItem = document.createElement('a');
             gameItem.className = 'world-game-item';
+            gameItem.href = `game.html?game=${game.slug}`;
             
             const gameImage = document.createElement('div');
             gameImage.className = 'world-game-image';
