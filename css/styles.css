@@ -866,6 +866,23 @@ footer {
     font-family: 'Space Grotesk', sans-serif;
 }
 
+.world-card-footer {
+    padding: 1rem 2rem;
+    background: rgba(110, 231, 183, 0.05);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: var(--accent-green);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.world-card-footer:hover {
+    background: rgba(110, 231, 183, 0.2);
+}
+
 /* Game grid for individual world pages (full game cards) */
 .world-games-grid {
     display: grid;

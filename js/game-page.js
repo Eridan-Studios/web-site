@@ -275,36 +275,8 @@ function showError(message) {
     document.getElementById('game-banner-image').style.display = 'none';
 }
 
-// ===== MOBILE NAVIGATION =====
+// Load game data when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    if (mobileMenuToggle && navLinks) {
-        mobileMenuToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            mobileMenuToggle.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking on a link
-        const navLinkItems = navLinks.querySelectorAll('a');
-        navLinkItems.forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileMenuToggle.classList.remove('active');
-            });
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!navLinks.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
-                navLinks.classList.remove('active');
-                mobileMenuToggle.classList.remove('active');
-            }
-        });
-    }
-    
-    // Load game data when DOM is ready
     loadGameData();
 });
 
