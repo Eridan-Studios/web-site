@@ -34,7 +34,6 @@ function populateCarousel(images) {
     
     // Check if carousel elements exist (only on index page)
     if (!track || !indicatorsContainer) {
-        console.log('Carousel elements not found - skipping carousel initialization');
         return;
     }
     
@@ -203,7 +202,6 @@ async function loadGames() {
 function populateGamesGallery(games) {
     // Check if games gallery exists (only on index page)
     if (!gamesGallery) {
-        console.log('Games gallery not found - skipping games initialization');
         return;
     }
     
@@ -422,7 +420,6 @@ async function loadWorlds() {
 function populateWorldsGrid(worlds) {
     // Check if worlds grid exists (only on index page)
     if (!worldsGrid) {
-        console.log('Worlds grid not found - skipping worlds initialization');
         return;
     }
     
@@ -563,7 +560,7 @@ async function populateWorldGamesGrid(gamesGrid, gameIds) {
 // Load games data from JSON
 async function loadGamesData() {
     try {
-        const response = await fetch('content/games.json');
+        const response = await fetch('https://eridan-studios.github.io/web-site/content/games.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -576,62 +573,3 @@ async function loadGamesData() {
 
 // Initialize worlds grid when DOM is loaded
 document.addEventListener('DOMContentLoaded', loadWorlds);
-
-// ===== MOBILE NAVIGATION =====
-document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    const body = document.body;
-    
-    // No overlay - using CSS effects instead
-    
-    // Toggle mobile menu
-    function toggleMobileMenu() {
-        mobileMenuToggle.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        body.classList.toggle('menu-open');
-    }
-    
-    // Close mobile menu
-    function closeMobileMenu() {
-        mobileMenuToggle.classList.remove('active');
-        navLinks.classList.remove('active');
-        body.classList.remove('menu-open');
-    }
-    
-    // Event listeners
-    mobileMenuToggle.addEventListener('click', toggleMobileMenu);
-    
-    // Close menu when clicking on nav links
-    navLinks.addEventListener('click', function(e) {
-        if (e.target.tagName === 'A') {
-            closeMobileMenu();
-        }
-    });
-    
-    // Close menu when clicking outside navigation
-    document.addEventListener('click', function(e) {
-        // Check if menu is open
-        if (navLinks.classList.contains('active')) {
-            // Check if click is outside navigation area
-            const nav = document.querySelector('nav');
-            if (!nav.contains(e.target)) {
-                closeMobileMenu();
-            }
-        }
-    });
-    
-    // Close menu on escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-            closeMobileMenu();
-        }
-    });
-    
-    // Close menu on window resize (if resizing to desktop)
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
-            closeMobileMenu();
-        }
-    });
-});

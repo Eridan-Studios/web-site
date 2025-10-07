@@ -22,7 +22,6 @@ async function loadWorldData() {
     }
     
     try {
-        console.log('Loading worlds from', WORLDS_JSON_URL);
         const response = await fetch(WORLDS_JSON_URL);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -37,7 +36,6 @@ async function loadWorldData() {
             return;
         }
         
-        console.log('World found:', world);
         populateWorldPage(world);
         
     } catch (error) {
@@ -334,8 +332,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Load world data when DOM is ready
-    console.log('DOM loaded, starting world loading...');
-    console.log('Current URL:', window.location.href);
     loadWorldData();
 });
 

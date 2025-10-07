@@ -7,13 +7,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 async function loadGames() {
     try {
-        console.log('Loading games from', GAMES_JSON_URL);
         const response = await fetch(GAMES_JSON_URL);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const games = await response.json();
-        console.log('Games loaded successfully:', games);
         
         // Sort games by distributionOrder
         games.sort((a, b) => a.distributionOrder - b.distributionOrder);

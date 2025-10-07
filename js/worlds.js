@@ -11,13 +11,11 @@ async function loadWorlds() {
     }
     
     try {
-        console.log('Loading worlds from', WORLDS_JSON_URL);
         const response = await fetch(WORLDS_JSON_URL);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const worlds = await response.json();
-        console.log('Worlds loaded successfully:', worlds);
         populateWorldsGrid(worlds);
     } catch (error) {
         console.error('Error loading worlds:', error);
@@ -201,7 +199,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Initialize worlds grid when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded, starting worlds loading...');
-    console.log('Current URL:', window.location.href);
     loadWorlds();
 });

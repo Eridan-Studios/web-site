@@ -22,7 +22,6 @@ async function loadGameData() {
     }
     
     try {
-        console.log('Loading games from', GAMES_JSON_URL);
         const response = await fetch(GAMES_JSON_URL);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -37,7 +36,6 @@ async function loadGameData() {
             return;
         }
         
-        console.log('Game found:', game);
         populateGamePage(game);
         
     } catch (error) {
@@ -179,54 +177,43 @@ function populateGameDetails(game) {
 
 // Populate world section
 async function populateWorldSection(game) {
-    console.log('Populating world section for game:', game.title, 'world:', game.world);
-    
     if (!game.world) {
-        console.log('No world specified, hiding world section');
         document.querySelector('.world-section-card').style.display = 'none';
         return;
     }
     
     try {
         // Load worlds data
-        console.log('Loading worlds from:', WORLDS_JSON_URL);
         const response = await fetch(WORLDS_JSON_URL);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const worlds = await response.json();
-        console.log('Loaded worlds:', worlds);
         
         // Find the world
         const world = worlds.find(w => w.id === game.world);
-        console.log('Found world:', world);
         if (!world) {
-            console.log('World not found, hiding section');
             document.querySelector('.world-section-card').style.display = 'none';
             return;
         }
         
         // Update world section title
-        console.log('Setting world section title to:', `Part of ${world.name}`);
         document.getElementById('world-section-title').textContent = `Part of ${world.name}`;
         
         // Set world image
         const worldImage = document.getElementById('world-section-image');
         const imagePath = world.image.startsWith('/') ? world.image : `content/images/${world.image}`;
-        console.log('Setting world image to:', imagePath);
         worldImage.src = imagePath;
         worldImage.alt = world.title;
         
         // Set world description
         const worldDescription = document.getElementById('world-description');
-        console.log('Setting world description:', world.description);
         worldDescription.innerHTML = world.description.replace(/\n/g, '<br>');
         
         // Set explore link
         const exploreLink = document.getElementById('world-explore-link');
         exploreLink.href = `world.html?world=${world.slug}`;
         exploreLink.textContent = `Explore ${world.name}`;
-        console.log('Set explore link to:', exploreLink.href);
         
         // Update "More from" heading
         document.querySelector('.other-games h3').textContent = `More from ${world.name}`;
@@ -239,7 +226,6 @@ async function populateWorldSection(game) {
         const allGames = await gamesResponse.json();
         
         const otherGames = allGames.filter(g => g.world === game.world && g.slug !== game.slug);
-        console.log('Found other games in world:', otherGames);
         
         // Populate other games list
         const otherGamesList = document.getElementById('other-games-list');
@@ -258,14 +244,10 @@ async function populateWorldSection(game) {
                     </a>
                 `;
             }).join('');
-            console.log('Setting other games HTML:', gamesHTML);
             otherGamesList.innerHTML = gamesHTML;
         } else {
-            console.log('No other games found, showing placeholder message');
             otherGamesList.innerHTML = '<p style="color: var(--text-secondary); font-style: italic;">No other games in this world yet.</p>';
         }
-        
-        console.log('World section populated successfully');
         
     } catch (error) {
         console.error('Error loading world data:', error);
@@ -323,8 +305,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Load game data when DOM is ready
-    console.log('DOM loaded, starting game loading...');
-    console.log('Current URL:', window.location.href);
     loadGameData();
 });
 
