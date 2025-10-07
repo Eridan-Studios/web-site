@@ -65,9 +65,10 @@ async function populateWorldPage(world) {
     worldDescription.innerHTML = world.description;
     
     // Set wiki link if available
-    if (world.wiki_url && world.wiki_url !== 'wiki') {
+    if (world.wiki_url) {
         wikiLink.href = world.wiki_url;
         wikiLink.textContent = '📖 Dive Deeper into the Wiki';
+        wikiLink.style.display = 'inline-block';
     } else {
         wikiLink.style.display = 'none';
     }
@@ -77,21 +78,19 @@ async function populateWorldPage(world) {
     
     // Update games section
     const worldGamesTitle = document.getElementById('world-games-title');
-    const worldGamesDescription = document.getElementById('world-games-description');
     
     worldGamesTitle.textContent = `Games in ${world.name}`;
-    worldGamesDescription.textContent = `Journey through the ${world.name} universe. With each game, you'll explore a fresh narrative, revealing different story depths of the same universe.`;
     
     // Load and populate games
     await populateWorldGames(world.games || []);
 }
 
-// Populate features cards
+// Populate features table
 function populateFeaturesCards(pillars) {
-    const featuresGrid = document.getElementById('features-grid');
+    const featuresTable = document.getElementById('features-table');
     
     // Clear existing content
-    featuresGrid.innerHTML = '';
+    featuresTable.innerHTML = '';
     
     if (!pillars || pillars.length === 0) {
         // Hide the entire features section if no pillars
@@ -99,20 +98,19 @@ function populateFeaturesCards(pillars) {
         return;
     }
     
-    // Create feature cards
+    // Create feature rows
     pillars.forEach((pillar, index) => {
-        const card = document.createElement('div');
-        card.className = 'feature-card';
+        const row = document.createElement('div');
+        row.className = 'feature-row';
         
-        card.innerHTML = `
-            <div class="feature-icon">${index + 1}</div>
-            <h3>${pillar.title}</h3>
-            <div class="feature-content">
+        row.innerHTML = `
+            <div class="feature-title">${pillar.title}</div>
+            <div class="feature-description">
                 ${pillar.text.split('\n\n').map(paragraph => `<p>${paragraph}</p>`).join('')}
             </div>
         `;
         
-        featuresGrid.appendChild(card);
+        featuresTable.appendChild(row);
     });
 }
 

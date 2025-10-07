@@ -79,7 +79,7 @@ function createWorldCard(world, template) {
     const cardImage = worldCard.querySelector('.world-card-image img');
     const cardTitle = worldCard.querySelector('.world-card-content h3');
     const cardDescription = worldCard.querySelector('.world-card-content p');
-    const gamesGrid = worldCard.querySelector('.world-games-grid');
+    const gamesGrid = worldCard.querySelector('.world-card-games-grid');
     const cardFooter = worldCard.querySelector('.world-card-footer');
     
     // Set image source and alt text
