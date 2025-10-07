@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Worlds - Eridan Games Studio</title>
+    <title id="page-title">World - Eridan Games</title>
     <link rel="icon" type="image/png" href="content/images/eridan-logo-2.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,18 +34,41 @@
         </button>
     </nav>
 
-    <!-- Worlds Hero -->
-    <section class="about-hero">
-        <div class="about-hero-content">
-            <h1>Our Worlds</h1>
-            <p>Each world we create is a universe unto itself, filled with rich, contrastive lore, compelling characters, and endless possibilities for adventure.</p>
+    <!-- World Hero Banner -->
+    <section class="world-hero">
+        <div class="world-hero-content">
+            <div class="world-banner">
+                <img id="world-banner-image" src="" alt="">
+            </div>
+            <p class="world-description" id="world-description">
+                Loading world information...
+            </p>
+            <div class="wiki-link cta-secondary">
+                <a href="#" id="wiki-link" class="cta-tertiary">📖 Dive Deeper into the Wiki (Soon to come)</a>
+            </div>
         </div>
     </section>
 
-    <!-- Worlds Section -->
-    <section class="worlds-section">
-        <div class="worlds-grid" id="worlds-grid">
-            <!-- World cards will be dynamically populated here -->
+    <!-- World Features Cards -->
+    <section class="world-features">
+        <div class="features-grid" id="features-grid">
+            <!-- Feature cards will be dynamically populated here -->
+        </div>
+    </section>
+
+    <!-- Games in This World -->
+    <section class="world-games">
+        <div class="section-header">
+            <h2 id="world-games-title">Games in This World</h2>
+            <p id="world-games-description">Loading games information...</p>
+        </div>
+        
+        <div class="world-games-grid" id="world-games-grid">
+            <!-- Game cards will be dynamically populated here -->
+        </div>
+
+        <div class="back-to-worlds">
+            <a href="worlds.html" class="cta-tertiary">‹ Back to All Worlds</a>
         </div>
     </section>
 
@@ -91,45 +114,8 @@
         </div>
     </footer>
 
-    <!-- World Card Template for Worlds Page -->
-    <template id="world-card-template-worlds">
-        <div class="world-card">
-            <div class="world-card-image">
-                <img src="" alt="">
-            </div>
-            <div class="world-card-content">
-                <div class="world-card-header">
-                    <h3></h3>
-                </div>
-                <p></p>
-                <div class="world-games-grid">
-                    <div class="world-game-item">
-                        <div class="world-game-image">
-                            <img src="content/images/rika-liguni-zeleni.png" alt="Rika: The Board Game">
-                        </div>
-                        <div class="world-game-title">Rika: The Board Game</div>
-                    </div>
-                    <div class="world-game-item">
-                        <div class="world-game-image">
-                            <img src="content/images/rika-dindra-zemlja.png" alt="Rika: Aliens as Allies">
-                        </div>
-                        <div class="world-game-title">Rika: Aliens as Allies</div>
-                    </div>
-                    <div class="world-game-item">
-                        <div class="world-game-image">
-                            <img src="content/images/game-rika-red-alert.png" alt="Rika: Red Alert">
-                        </div>
-                        <div class="world-game-title">Rika: Red Alert</div>
-                    </div>
-                </div>
-            </div>
-            <div class="world-card-footer">
-                Explore the world →
-            </div>
-        </div>
-    </template>
-
     <script src="starfield.js"></script>
-    <script src="worlds.js"></script>
+    <script src="script.js"></script>
+    <script src="world-page.js"></script>
 </body>
 </html>

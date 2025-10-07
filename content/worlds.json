@@ -36,7 +36,7 @@
     "id": "atomic-horizon",
     "name": "Atomic Horizon",
     "slug": "atomic-horizon",
-    "description": "Atomic Horizon is a retrofuturist setting where humanity survives in a corporate-dominated Solar System at the end of the 21st century. After Earth fell to the Engramized Singularity—uploaded minds turned digital plague—the Terrestrial Cordon sealed the homeworld away. Now corporations rule the colonies, fusion reactors power expansion, and wars are fought over fusion fuel, salvaged technology, mining rights, orbital territories, and countless other claims. This is humanity's future: nuclear, industrial, and owned.",
+    "description": "Atomic Horizon is a retrofuturist setting where humanity survives in a corporate-dominated Solar System at the end of the 21st century. After Earth fell to the Engramized Singularity—uploaded minds turned digital plague—the Terrestrial Cordon sealed the homeworld away.<br/><br/>Now corporations rule the colonies, fusion reactors power expansion, and wars are fought over fusion fuel, salvaged technology, mining rights, orbital territories, and countless other claims. This is humanity's future: nuclear, industrial, and owned.",
     "image": "world-atomic-horizon.png",
     "games": ["atomic-horizon-warcaskets"],
     "tagline": "The homeworld is forbidden. The future is fusion. Survival is negotiable.",
@@ -44,7 +44,7 @@
     "gameplay_pillars": [
       {
         "title": "Hard Vacuum, Harder Choices",
-        "text": "Space is not an adventure—it's a workplace. Radiation, decompression, and equipment failure kill as readily as bullets. Colonies cling to asteroids and moons, sustained by fusion reactors and corporate supply lines. Travel is measured in months, not hyperspace jumps. Engineers matter more than heroes. This is the solar system as it is: vast, hostile, and indifferent."
+        "text": "Space is not an adventure—it's a workplace. <strong>Radiation, decompression, and equipment failure kill as readily as bullets.</strong> Colonies cling to asteroids and moons, sustained by fusion reactors and corporate supply lines. Travel is measured in months, not hyperspace jumps. Engineers matter more than heroes. This is the solar system as it is: <em>vast, hostile, and indifferent.</em>"
       },
       {
         "title": "Corporate Sovereignty",

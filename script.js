@@ -503,9 +503,9 @@ function createWorldCard(world) {
         }
     }
     
-    // Set footer link (you can customize this URL structure)
+    // Set footer link to world.html with world slug parameter
     cardFooter.onclick = () => {
-        window.location.href = `#world-${world.slug}`;
+        window.location.href = `world.html?world=${world.slug}`;
     };
 
     return worldCard;

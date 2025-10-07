@@ -91,15 +91,16 @@ function createWorldCard(world, template) {
     cardTitle.textContent = world.name;
     
     // Set description (use tagline if available, otherwise fall back to description)
-    cardDescription.textContent = world.tagline || world.description;
+    // Use innerHTML to render any HTML content in the description
+    cardDescription.innerHTML = world.tagline || world.description;
     cardDescription.classList.add('mb-1-5');
     
     // Populate games grid
     populateWorldGamesGrid(gamesGrid, world.games || []);
     
-    // Set footer link (you can customize this URL structure)
+    // Set footer link to world.html with world slug parameter
     cardFooter.onclick = () => {
-        window.location.href = `#world-${world.slug}`;
+        window.location.href = `world.html?world=${world.slug}`;
     };
 
     return worldCard;
