@@ -473,6 +473,7 @@ function createWorldCard(world) {
     const cardTitle = worldCard.querySelector('.world-card-content h3');
     const cardDescription = worldCard.querySelector('.world-card-content p');
     const cardFooter = worldCard.querySelector('.world-card-footer');
+    const cardLink = worldCard.querySelector('.world-card');
     
     // Set image source and alt text
     const imagePath = world.image.startsWith('/') ? world.image : `content/images/${world.image}`;
@@ -502,10 +503,15 @@ function createWorldCard(world) {
         }
     }
     
-    // Set footer link to world.html with world slug parameter
-    cardFooter.onclick = () => {
-        window.location.href = `world.html?world=${world.slug}`;
-    };
+    // Set card link to world.html with world slug parameter (only for index page)
+    if (!isWorldsPage && cardLink) {
+        cardLink.href = `world.html?world=${world.slug}`;
+    } else if (cardFooter) {
+        // For worlds page, keep the footer onclick behavior
+        cardFooter.onclick = () => {
+            window.location.href = `world.html?world=${world.slug}`;
+        };
+    }
 
     return worldCard;
 }
