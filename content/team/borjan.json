@@ -1,0 +1,32 @@
+{
+  "id": "borjan",
+  "name": "Borjan",
+  "class": "Gameplay Systems Designer",
+  "vibe": "Lawful Architect",
+  "avatar": "content/images/sven.jpg",
+  "abilities": {
+    "design": 19,
+    "rules": 20,
+    "writing": 13,
+    "art": 11,
+    "tech": 16,
+    "playtesting": 18
+  },
+  "backstory": "Systems architect who transforms creative visions into elegant, balanced mechanics. Borjan joined the Arena design group early in development and has been instrumental in creating engaging gameplay loops that keep players coming back. His expertise in mathematical game design ensures that complex systems remain intuitive and fun. Borjan's analytical approach to game mechanics makes him the go-to person for balancing asymmetric gameplay and ensuring fair competitive experiences.",
+  "traits": {
+    "advantage": "Can mathematically predict game balance before playtesting",
+    "feat": "Designed the core mechanics for Rika: The Board Game",
+    "quirk": "Keeps detailed spreadsheets of every game mechanic"
+  },
+  "proficiencies": [
+    "Mathematical Game Design",
+    "System Architecture",
+    "Game Balance",
+    "Mechanic Innovation"
+  ],
+  "currentQuest": [
+    "Perfecting asymmetric gameplay mechanics",
+    "Balancing competitive game systems",
+    "Developing modular game components"
+  ]
+}
