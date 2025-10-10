@@ -3,12 +3,13 @@ class TeamLoader {
     constructor() {
         this.teamMembers = [];
         this.container = document.getElementById('team-members-container');
+        this.BASE_URL = 'https://eridan-studios.github.io/web-site/content/team/';
     }
 
     async loadTeamMembers() {
         try {
             // Load the team.json file to get the list of team member files
-            const teamResponse = await fetch('./content/team/team.json');
+            const teamResponse = await fetch(`${this.BASE_URL}team.json`);
             if (!teamResponse.ok) {
                 throw new Error(`Failed to load team.json: ${teamResponse.status}`);
             }
@@ -18,7 +19,7 @@ class TeamLoader {
             // Load each team member's data
             const teamPromises = teamFiles.map(async (filename) => {
                 try {
-                    const memberResponse = await fetch(`./content/team/${filename}`);
+                    const memberResponse = await fetch(`${this.BASE_URL}${filename}`);
                     if (!memberResponse.ok) {
                         console.warn(`Failed to load ${filename}: ${memberResponse.status}`);
                         return null;
@@ -67,7 +68,7 @@ class TeamLoader {
         img.alt = member.name;
         img.onerror = () => {
             // Fallback to placeholder if image fails to load
-            img.src = './content/images/placeholder-user.jpg';
+            img.src = 'https://eridan-studios.github.io/web-site/content/images/placeholder-user.jpg';
         };
 
         avatarDiv.appendChild(img);
@@ -76,11 +77,16 @@ class TeamLoader {
         nameDiv.className = 'team-member-name';
         nameDiv.textContent = member.name;
 
+        const classDiv = document.createElement('p');
+        classDiv.className = 'team-member-class';
+        classDiv.textContent = member.class;
+
         memberDiv.appendChild(avatarDiv);
         memberDiv.appendChild(nameDiv);
+        memberDiv.appendChild(classDiv);
 
-        // Add click handler
-        memberDiv.addEventListener('click', () => {
+        // Add click handler to avatar only
+        avatarDiv.addEventListener('click', () => {
             this.handleMemberClick(member);
         });
 
@@ -88,8 +94,13 @@ class TeamLoader {
     }
 
     handleMemberClick(member) {
-        // Show alert with member information
-        alert(`${member.name}\n${member.class}\n\n${member.backstory}`);
+        // Open character sheet modal with member data
+        if (window.characterSheetModal) {
+            window.characterSheetModal.updateCharacterData(member);
+            window.characterSheetModal.open();
+        } else {
+            console.error('Character sheet modal not available');
+        }
     }
 
     showError() {
