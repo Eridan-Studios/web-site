@@ -1,0 +1,31 @@
+{
+  "id": "character-id",
+  "name": "Character Name",
+  "class": "Role/Position",
+  "vibe": "Personality Alignment",
+  "avatar": "path/to/avatar-image.jpg",
+  "abilities": {
+    "design": 12,
+    "rules": 15,
+    "writing": 14,
+    "art": 10,
+    "tech": 18,
+    "playtesting": 16
+  },
+  "backstory": "Character's background story and experience. This should be a detailed paragraph describing their journey, expertise, and what drives them in their work.",
+  "traits": {
+    "advantage": "Special strength or unique ability",
+    "feat": "Notable accomplishment or skill",
+    "quirk": "Distinctive characteristic or habit"
+  },
+  "proficiencies": [
+    "Specific skill or expertise area",
+    "Another area of specialization",
+    "Third proficiency area"
+  ],
+  "currentQuest": [
+    "Current project or goal",
+    "Another active objective",
+    "Third ongoing task"
+  ]
+}

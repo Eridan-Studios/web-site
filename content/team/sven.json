@@ -1,0 +1,32 @@
+{
+  "id": "sven",
+  "name": "Sven",
+  "class": "Community Manager & Producer",
+  "vibe": "Neutral Diplomat",
+  "avatar": "content/images/sven.jpg",
+  "abilities": {
+    "design": 14,
+    "rules": 15,
+    "writing": 16,
+    "art": 12,
+    "tech": 17,
+    "playtesting": 18
+  },
+  "backstory": "Bridge between the studio and the community, ensuring every player's voice is heard while keeping projects on track and teams aligned. Sven joined the Arena RPG group and quickly became essential to the studio's operations. His role as Community Manager & Producer means he's constantly balancing creative vision with practical constraints. Sven's ability to communicate complex ideas clearly makes him invaluable in coordinating between different team members and external partners.",
+  "traits": {
+    "advantage": "Can translate between creative vision and practical reality",
+    "feat": "Successfully launched Eridan Games Studio website and community",
+    "quirk": "Keeps detailed notes on every team meeting and decision"
+  },
+  "proficiencies": [
+    "Project Management",
+    "Community Building",
+    "Communication",
+    "Team Coordination"
+  ],
+  "currentQuest": [
+    "Managing Atomic Horizon: Warcaskets development",
+    "Building Eridan Games community",
+    "Coordinating studio operations"
+  ]
+}
