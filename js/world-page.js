@@ -68,7 +68,9 @@ async function populateWorldPage(world) {
         wikiLink.textContent = '📖 Dive Deeper into the Wiki';
         wikiLink.style.display = 'inline-block';
     } else {
-        wikiLink.style.display = 'none';
+        wikiLink.href = 'https://eridan-studios.github.io/eridan-wiki/';
+        wikiLink.textContent = '📖 Dive Deeper into the Wiki';
+        wikiLink.style.display = 'inline-block';
     }
     
     // Populate features cards
