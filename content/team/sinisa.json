@@ -5,19 +5,22 @@
   "vibe": "Chaotic Innovator",
   "avatar": "content/images/sven.jpg",
   "abilities": {
-    "design": 18,
-    "rules": 16,
-    "writing": 15,
-    "art": 13,
-    "tech": 14,
-    "playtesting": 17
+    "design": 9,
+    "rules": 8,
+    "writing": 8,
+    "art": 7,
+    "tech": 7,
+    "playtesting": 9
   },
   "backstory": "Innovative designer pushing creative boundaries with fresh mechanics and unexpected gameplay twists. Siniša joined Eridan Games Studio in September 2025, bringing his own games and creative vision to the team. His approach to game design emphasizes innovation and surprise, always exploring new ways to delight players with unexpected mechanics and creative solutions. Siniša's experimental mindset keeps the studio pushing boundaries and trying new approaches to familiar problems.",
-  "traits": {
-    "advantage": "Can find creative solutions to impossible design problems",
-    "feat": "Designed Rika: Red Alert's unique crisis-solving mechanics",
-    "quirk": "Prototypes new mechanics during coffee breaks"
-  },
+  "strengths": [
+    "Can find creative solutions to impossible design problems",
+    "Designed Rika: Red Alert's unique crisis-solving mechanics"
+  ],
+  "weaknesses": [
+    "Prototypes new mechanics during coffee breaks",
+    "Sometimes over-complicates simple problems with innovative solutions"
+  ],
   "proficiencies": [
     "Mechanic Innovation",
     "Creative Problem Solving",

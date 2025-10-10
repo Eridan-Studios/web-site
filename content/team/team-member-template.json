@@ -5,19 +5,22 @@
   "vibe": "Personality Alignment",
   "avatar": "path/to/avatar-image.jpg",
   "abilities": {
-    "design": 12,
-    "rules": 15,
-    "writing": 14,
-    "art": 10,
-    "tech": 18,
-    "playtesting": 16
+    "design": 6,
+    "rules": 7,
+    "writing": 7,
+    "art": 5,
+    "tech": 9,
+    "playtesting": 8
   },
   "backstory": "Character's background story and experience. This should be a detailed paragraph describing their journey, expertise, and what drives them in their work.",
-  "traits": {
-    "advantage": "Special strength or unique ability",
-    "feat": "Notable accomplishment or skill",
-    "quirk": "Distinctive characteristic or habit"
-  },
+  "strengths": [
+    "Special strength or unique ability",
+    "Notable accomplishment or skill"
+  ],
+  "weaknesses": [
+    "Area for improvement or limitation",
+    "Distinctive characteristic that could be challenging"
+  ],
   "proficiencies": [
     "Specific skill or expertise area",
     "Another area of specialization",

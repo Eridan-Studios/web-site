@@ -26,9 +26,9 @@ class CharacterSheetModal {
                         <header>
                             <div class="banner" role="group" aria-label="Info banner">
                                 <div class="kv-container">
-                                    <div class="kv"><div class="k">Name</div><div class="v">Ava Devlin</div></div>
-                                    <div class="kv"><div class="k">Class</div><div class="v">Engineer (Gameplay)</div></div>
-                                    <div class="kv"><div class="k">Vibe</div><div class="v">Lawful Good</div></div>
+                                    <div class="kv"><div class="k">Name</div><div class="v">Loading...</div></div>
+                                    <div class="kv"><div class="k">Class</div><div class="v">Loading...</div></div>
+                                    <div class="kv"><div class="k">Vibe</div><div class="v">Loading...</div></div>
                                 </div>
                             </div>
                         </header>
@@ -39,50 +39,96 @@ class CharacterSheetModal {
                                     <span>Portrait 200×200</span>
                                 </div>
                                 <div class="abilities" role="list" aria-label="Core abilities">
-                                    <div class="box" role="listitem"><span class="label">Design</span><div class="score">12</div></div>
-                                    <div class="box"><span class="label">Rules</span><div class="score">15</div></div>
-                                    <div class="box"><span class="label">Writing</span><div class="score">14</div></div>
-                                    <div class="box"><span class="label">Art</span><div class="score">10</div></div>
-                                    <div class="box"><span class="label">Tech</span><div class="score">18</div></div>
-                                    <div class="box"><span class="label">Playtesting</span><div class="score">16</div></div>
+                                    <div class="box" role="listitem">
+                                        <span class="label">Design</span>
+                                        <div class="progress-container">
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 0%"></div>
+                                            </div>
+                                            <div class="progress-value">0</div>
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <span class="label">Rules</span>
+                                        <div class="progress-container">
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 0%"></div>
+                                            </div>
+                                            <div class="progress-value">0</div>
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <span class="label">Writing</span>
+                                        <div class="progress-container">
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 0%"></div>
+                                            </div>
+                                            <div class="progress-value">0</div>
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <span class="label">Art</span>
+                                        <div class="progress-container">
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 0%"></div>
+                                            </div>
+                                            <div class="progress-value">0</div>
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <span class="label">Tech</span>
+                                        <div class="progress-container">
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 0%"></div>
+                                            </div>
+                                            <div class="progress-value">0</div>
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <span class="label">Playtesting</span>
+                                        <div class="progress-container">
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 0%"></div>
+                                            </div>
+                                            <div class="progress-value">0</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </aside>
 
                             <main>
                                 <div class="panel">
                                     <h2 class="mb-1">Backstory</h2>
-                                    <p>Ava cut her teeth hacking together RPG systems for weekend one-shots and building tiny tools to speed up encounter prep. After a detour into real-time rendering, she returned to tabletop with a focus on crunchy-but-kind mechanics—rules that invite clever play without slowing the table. She pairs a love of combat timing with a soft spot for cozy downtime scenes, and she's happiest when spreadsheets and stories shake hands. When playtests stall, Ava breaks the deadlock with quick prototypes, clear notes, and an endless stash of dice. Outside of work, she's a worldbuilder of small, believable tow.</p>
+                                    <p>Loading...</p>
                                 </div>
 
                                 <div class="grid-two">
-                                    <div class="panel">
-                                        <h2>Traits</h2>
+                                    <div class="panel middle-panel">
+                                        <h2>Strengths</h2>
                                         <ul class="list">
-                                            <li><strong>Advantage:</strong> Reads legacy rules like ancient runes.</li>
-                                            <li><strong>Feat:</strong> One-Page Refactor — simplifies a subsystem without losing depth.</li>
-                                            <li><strong>Quirk:</strong> Names internal tools after boss mechanics.</li>
+                                            <li>Loading...</li>
+                                        </ul>
+                                        <h2 class="mt-1">Weakness</h2>
+                                        <ul class="list">
+                                            <li>Loading...</li>
                                         </ul>
                                     </div>
-                                    <div class="panel">
+                                    <div class="panel middle-panel">
                                         <h2>Proficiencies</h2>
                                         <ul class="list">
-                                            <li>Action economy, status effects, encounter pacing</li>
-                                            <li>Balancing tables, progression curves, probability tuning</li>
-                                            <li>Session zero frameworks & playtest facilitation</li>
+                                            <li>Loading...</li>
                                         </ul>
                                     </div>
                                 </div>
+
+                                <div class="panel current-quest">
+                                    <h2>Current Quest</h2>
+                                    <ul class="list">
+                                        <li>Loading...</li>
+                                    </ul>
+                                </div>
                             </main>
                         </section>
-                        
-                        <div class="panel current-quest">
-                            <h2>Current Quest</h2>
-                            <ul class="list">
-                                <li>Lock the dodge/counter timing for the core moveset</li>
-                                <li>Draft a modular affix system for items & foes</li>
-                                <li>Trim resolution steps to keep turns under 60 seconds</li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -308,15 +354,19 @@ class CharacterSheetModal {
             avatarEl.innerHTML = `<img src="${characterData.avatar}" alt="${characterData.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">`;
         }
 
-        // Update abilities
+        // Update abilities - using JSON data instead of hardcoded values
         if (characterData.abilities) {
             const abilityBoxes = sheet.querySelectorAll('.abilities .box');
             const abilityKeys = ['design', 'rules', 'writing', 'art', 'tech', 'playtesting'];
             
             abilityBoxes.forEach((box, index) => {
-                const scoreEl = box.querySelector('.score');
-                if (scoreEl && characterData.abilities[abilityKeys[index]] !== undefined) {
-                    scoreEl.textContent = characterData.abilities[abilityKeys[index]];
+                const progressFill = box.querySelector('.progress-fill');
+                const progressValue = box.querySelector('.progress-value');
+                if (progressFill && progressValue && characterData.abilities[abilityKeys[index]] !== undefined) {
+                    const value = characterData.abilities[abilityKeys[index]];
+                    const percentage = (value / 10) * 100; // Convert 1-10 scale to percentage
+                    progressFill.style.width = `${percentage}%`;
+                    progressValue.textContent = value;
                 }
             });
         }
@@ -327,15 +377,26 @@ class CharacterSheetModal {
             backstoryEl.textContent = characterData.backstory;
         }
 
-        // Update traits
-        if (characterData.traits) {
-            const traitsList = sheet.querySelector('.panel:nth-child(2) .list');
-            if (traitsList) {
-                traitsList.innerHTML = `
-                    <li><strong>Advantage:</strong> ${characterData.traits.advantage || 'N/A'}</li>
-                    <li><strong>Feat:</strong> ${characterData.traits.feat || 'N/A'}</li>
-                    <li><strong>Quirk:</strong> ${characterData.traits.quirk || 'N/A'}</li>
-                `;
+        // Update strengths and weaknesses
+        if (characterData.strengths && Array.isArray(characterData.strengths)) {
+            // Find the strengths list - it's the first ul after the "Strengths" h2
+            const strengthsPanel = sheet.querySelector('.grid-two .panel:first-child');
+            const strengthsList = strengthsPanel ? strengthsPanel.querySelector('h2:first-of-type + ul') : null;
+            if (strengthsList) {
+                strengthsList.innerHTML = characterData.strengths
+                    .map(strength => `<li>${strength}</li>`)
+                    .join('');
+            }
+        }
+
+        if (characterData.weaknesses && Array.isArray(characterData.weaknesses)) {
+            // Find the weaknesses list - it's the ul after the "Weakness" h2
+            const weaknessesPanel = sheet.querySelector('.grid-two .panel:first-child');
+            const weaknessesList = weaknessesPanel ? weaknessesPanel.querySelector('h2:last-of-type + ul') : null;
+            if (weaknessesList) {
+                weaknessesList.innerHTML = characterData.weaknesses
+                    .map(weakness => `<li>${weakness}</li>`)
+                    .join('');
             }
         }
 
@@ -351,7 +412,7 @@ class CharacterSheetModal {
 
         // Update current quest
         if (characterData.currentQuest && Array.isArray(characterData.currentQuest)) {
-            const questList = sheet.querySelector('.current-quest .list');
+            const questList = sheet.querySelector('main .current-quest .list');
             if (questList) {
                 questList.innerHTML = characterData.currentQuest
                     .map(quest => `<li>${quest}</li>`)

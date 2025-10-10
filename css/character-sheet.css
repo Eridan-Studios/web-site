@@ -189,24 +189,23 @@
 }
 
 .character-sheet .abilities {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
     width: 100%;
 }
 
 .character-sheet .box {
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 1rem 1.5rem;
     background: var(--dark-bg);
     position: relative;
     transition: all 0.3s ease;
-    min-height: 90px;
+    min-height: 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     backdrop-filter: blur(1px);
 }
 
@@ -224,18 +223,75 @@
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 999px;
-    font: 600 10px/1 'Space Grotesk', sans-serif;
+    font: 600 12px/1 'Space Grotesk', sans-serif;
     text-transform: uppercase;
     letter-spacing: .1em;
     color: var(--text-secondary);
 }
 
-.character-sheet .score {
-    display: grid;
-    place-items: center;
-    font: 700 2rem/1 'Space Grotesk', sans-serif;
-    margin: 0.5rem 0 0 0;
+.character-sheet .box .progress-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.character-sheet .box .progress-bar {
+    flex: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.character-sheet .box .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-green), #4ade80);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+    position: relative;
+}
+
+.character-sheet .box .progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.character-sheet .box:hover .progress-fill::after {
+    animation: shimmer 1.2s ease-out;
+}
+
+@keyframes shimmer {
+    0% { 
+        transform: translateX(-100%); 
+        opacity: 0;
+    }
+    20% { 
+        opacity: 1;
+    }
+    80% { 
+        opacity: 1;
+    }
+    100% { 
+        transform: translateX(100%); 
+        opacity: 0;
+    }
+}
+
+.character-sheet .box .progress-value {
+    font: 700 1rem/1 'Space Grotesk', sans-serif;
     color: var(--accent-green);
+    min-width: 2rem;
+    text-align: right;
 }
 
 
@@ -254,18 +310,17 @@
 
 .character-sheet .panel.traits,
 .character-sheet .panel.proficiencies {
-    height: 302px;
+    height: 400px;
+}
+
+.character-sheet .panel.middle-panel {
+    min-height: 400px;
+    max-height: 400px;
 }
 
 .character-sheet .panel.current-quest {
     min-height: 200px;
-    max-width: 600px;
-    margin: var(--spacing-md) auto var(--spacing-lg);
-    width: calc(100% - 4rem);
-}
-
-.character-sheet .panel.current-quest h2 {
-    text-align: center;
+    max-height: 300px;
 }
 
 .character-sheet .panel:hover {
@@ -282,6 +337,21 @@
     flex-shrink: 0;
 }
 
+.character-sheet .panel h3 {
+    font: 600 1.2rem/1 'Space Grotesk', sans-serif;
+    margin-top: 1rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+    flex-shrink: 0;
+}
+
+.character-sheet .divider {
+    height: 1px;
+    background: var(--border-color);
+    margin: 1rem 0;
+    opacity: 0.5;
+}
+
 .mb-05 {
     margin-bottom: 0.5rem;
 }
@@ -296,6 +366,22 @@
 
 .mb-2 {
     margin-bottom: 2rem;
+}
+
+.mt-05 {
+    margin-top: 0.5rem;
+}
+
+.mt-1 {
+    margin-top: 1rem;
+}
+
+.mt-15 {
+    margin-top: 1.5rem;
+}
+
+.mt-2 {
+    margin-top: 2rem;
 }
 
 .character-sheet .panel p {
@@ -380,7 +466,7 @@
     }
     
     .character-sheet .abilities {
-        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
     }
     
     .character-sheet .avatar {
@@ -395,10 +481,7 @@
     
     .character-sheet .panel.current-quest {
         min-height: 150px;
-        max-width: none;
-        width: calc(100% - 4rem);
-        margin: 1rem auto 3rem;
-        padding: 1.5rem;
+        max-height: 200px;
     }
 }
 
@@ -408,7 +491,7 @@
     }
     
     .character-sheet .abilities {
-        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
     }
     
     .character-sheet .avatar {
@@ -423,10 +506,7 @@
     
     .character-sheet .panel.current-quest {
         min-height: 120px;
-        max-width: none;
-        width: calc(100% - 4rem);
-        margin: 1rem auto 3rem;
-        padding: 1.5rem;
+        max-height: 150px;
     }
     
     .character-sheet .banner .kv-container {

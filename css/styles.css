@@ -2229,8 +2229,7 @@ footer {
     gap: 0.5rem;
 }
 
-.tag,
-.platform-tag {
+.tag {
     background-color: var(--accent-purple);
     color: var(--text-primary);
     padding: 0.4rem 0.8rem;

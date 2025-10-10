@@ -5,19 +5,22 @@
   "vibe": "Chaotic Healer",
   "avatar": "content/images/sven.jpg",
   "abilities": {
-    "design": 17,
-    "rules": 16,
-    "writing": 18,
-    "art": 13,
-    "tech": 14,
-    "playtesting": 19
+    "design": 9,
+    "rules": 8,
+    "writing": 9,
+    "art": 7,
+    "tech": 7,
+    "playtesting": 10
   },
   "backstory": "Therapeutic RPG specialist crafting meaningful player experiences. Nikola joined the Arena RPG group and brings a unique perspective to game design, focusing on systems that promote growth, connection, and personal discovery through play. His background in therapeutic gaming ensures that every RPG experience has the potential to be transformative. Nikola's approach to game design emphasizes player agency and emotional engagement over traditional power progression.",
-  "traits": {
-    "advantage": "Can design games that heal while entertaining",
-    "feat": "Pioneered therapeutic RPG mechanics for Eridan Games",
-    "quirk": "Always asks 'How does this make players feel?' during design meetings"
-  },
+  "strengths": [
+    "Can design games that heal while entertaining",
+    "Pioneered therapeutic RPG mechanics for Eridan Games"
+  ],
+  "weaknesses": [
+    "Always asks 'How does this make players feel?' during design meetings",
+    "Can get too focused on emotional impact at the expense of gameplay mechanics"
+  ],
   "proficiencies": [
     "Therapeutic Game Design",
     "Player Psychology",

@@ -5,19 +5,22 @@
   "vibe": "Lawful Visionary",
   "avatar": "content/images/sven.jpg",
   "abilities": {
-    "design": 20,
-    "rules": 18,
-    "writing": 15,
-    "art": 12,
-    "tech": 14,
-    "playtesting": 17
+    "design": 10,
+    "rules": 9,
+    "writing": 8,
+    "art": 6,
+    "tech": 7,
+    "playtesting": 9
   },
   "backstory": "Visionary game designer with 8+ years crafting immersive board game experiences. Dino founded Eridan Games Studio after years of developing complex game systems and mechanics. His passion for creating worlds where every choice matters drives the studio's mission. Known for his ability to balance intricate gameplay with accessibility, Dino spearheads the development of the Rule of Rika universe with a focus on player agency and meaningful decisions.",
-  "traits": {
-    "advantage": "Can see the entire game system architecture before it's built",
-    "feat": "Founded Eridan Games Studio and created the Rule of Rika universe",
-    "quirk": "Always carries a prototype game component in his pocket"
-  },
+  "strengths": [
+    "Can see the entire game system architecture before it's built",
+    "Founded Eridan Games Studio and created the Rule of Rika universe"
+  ],
+  "weaknesses": [
+    "Always carries a prototype game component in his pocket",
+    "Can get lost in perfecting details at the expense of deadlines"
+  ],
   "proficiencies": [
     "Game System Design",
     "Strategic Planning",

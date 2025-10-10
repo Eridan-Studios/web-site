@@ -5,19 +5,22 @@
   "vibe": "Lawful Architect",
   "avatar": "content/images/sven.jpg",
   "abilities": {
-    "design": 17,
-    "rules": 15,
-    "writing": 16,
-    "art": 14,
-    "tech": 13,
-    "playtesting": 16
+    "design": 9,
+    "rules": 8,
+    "writing": 8,
+    "art": 7,
+    "tech": 7,
+    "playtesting": 8
   },
   "backstory": "Architect of immersive game worlds, crafting detailed environments that feel lived-in and authentic. Matija joined Eridan Games Studio in September 2025, bringing his own games and worlds to the studio. His expertise in world-building ensures that every location tells a story and feels like a real place with its own history, culture, and secrets. Matija's attention to detail makes game worlds feel alive and believable, enhancing player immersion and engagement.",
-  "traits": {
-    "advantage": "Can design worlds that feel like they existed before the game",
-    "feat": "Created detailed world designs for multiple game projects",
-    "quirk": "Maps out every location with architectural precision"
-  },
+  "strengths": [
+    "Can design worlds that feel like they existed before the game",
+    "Created detailed world designs for multiple game projects"
+  ],
+  "weaknesses": [
+    "Maps out every location with architectural precision",
+    "Can get too focused on world details and lose sight of gameplay flow"
+  ],
   "proficiencies": [
     "Environmental Design",
     "World Architecture",

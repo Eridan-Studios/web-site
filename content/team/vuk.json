@@ -5,19 +5,22 @@
   "vibe": "Chaotic Artist",
   "avatar": "content/images/sven.jpg",
   "abilities": {
-    "design": 18,
-    "rules": 12,
-    "writing": 13,
-    "art": 20,
-    "tech": 15,
-    "playtesting": 14
+    "design": 9,
+    "rules": 6,
+    "writing": 7,
+    "art": 10,
+    "tech": 8,
+    "playtesting": 7
   },
   "backstory": "Visual storyteller bringing worlds to life through stunning artwork. Vuk joined Eridan Games Studio as a freelancer through Sven's connection and quickly became the Art Director. He creates the visual language that defines the Rule of Rika universe, ensuring that every piece of art tells a story and enhances the player experience. Vuk's artistic vision helps players connect emotionally with the game worlds, making abstract concepts tangible through visual design.",
-  "traits": {
-    "advantage": "Can visualize entire game worlds before they're described",
-    "feat": "Created the visual identity for the Rule of Rika universe",
-    "quirk": "Sketches character concepts during every conversation"
-  },
+  "strengths": [
+    "Can visualize entire game worlds before they're described",
+    "Created the visual identity for the Rule of Rika universe"
+  ],
+  "weaknesses": [
+    "Sketches character concepts during every conversation",
+    "Sometimes gets lost in artistic details and misses deadlines"
+  ],
   "proficiencies": [
     "Visual Storytelling",
     "Character Design",
