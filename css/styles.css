@@ -262,6 +262,10 @@ nav {
     color: var(--accent-green);
 }
 
+.accent-green {
+    color: var(--accent-green);
+}
+
 .hero-text p {
     font-size: 1.1rem;
     color: var(--text-secondary);
@@ -414,33 +418,80 @@ nav {
 /* Artist Banner */
 .artist-banner {
     background: linear-gradient(135deg, rgba(110, 231, 183, 0.2), rgba(94, 234, 212, 0.2));
-    padding: 2rem 5%;
+    padding: 4rem 5%;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
 }
 
 .artist-banner-content {
-    max-width: 1400px;
+    max-width: 900px;
     margin: 0 auto;
     text-align: center;
 }
 
 .artist-banner h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    font-size: 2rem;
+    margin-bottom: 1rem;
     font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
 }
 
 .artist-banner h2 .accent {
     color: var(--accent-green);
 }
 
+.artist-banner h3 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.artist-banner h4 {
+    font-size: 1.2rem;
+    margin: 2.5rem 0 1.5rem 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    color: var(--accent-green);
+    text-align: left;
+}
+
 .artist-banner p {
     color: var(--text-primary);
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.6;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.8;
     font-family: 'Space Grotesk', sans-serif;
+    text-align: justify;
+    margin-bottom: 1.5rem;
+}
+
+.artist-banner ul {
+    text-align: left;
+    max-width: 700px;
+    margin: 0 auto 2rem auto;
+    padding-left: 0;
+    list-style: none;
+}
+
+.artist-banner li {
+    color: var(--text-primary);
+    font-size: 1rem;
+    line-height: 1.7;
+    font-family: 'Space Grotesk', sans-serif;
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.artist-banner li::before {
+    content: "•";
+    color: var(--accent-green);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 
@@ -1254,6 +1305,45 @@ footer {
     .cta-secondary {
         width: 100%;
         max-width: 280px;
+    }
+
+    /* Artist Banner Mobile */
+    .artist-banner {
+        padding: 3rem 5%;
+    }
+
+    .artist-banner-content {
+        max-width: 100%;
+    }
+
+    .artist-banner h2 {
+        font-size: 1.6rem;
+    }
+
+    .artist-banner h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .artist-banner h4 {
+        font-size: 1.1rem;
+        margin: 2rem 0 1rem 0;
+    }
+
+    .artist-banner p {
+        font-size: 1rem;
+        text-align: left;
+        line-height: 1.7;
+    }
+
+    .artist-banner ul {
+        max-width: 100%;
+        margin: 0 auto 1.5rem auto;
+    }
+
+    .artist-banner li {
+        font-size: 0.95rem;
+        line-height: 1.6;
     }
 
     .hero-carousel {
