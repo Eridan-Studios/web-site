@@ -4,14 +4,6 @@
   "class": "Role/Position",
   "vibe": "Personality Alignment",
   "avatar": "path/to/avatar-image.jpg",
-  "abilities": {
-    "design": 6,
-    "rules": 7,
-    "writing": 7,
-    "art": 5,
-    "tech": 9,
-    "playtesting": 8
-  },
   "backstory": "Character's background story and experience. This should be a detailed paragraph describing their journey, expertise, and what drives them in their work.",
   "strengths": [
     "Special strength or unique ability",

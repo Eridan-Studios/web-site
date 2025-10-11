@@ -1915,7 +1915,7 @@ footer {
 }
 
 .wiki-link {
-    margin: 0;
+    margin: 0 auto;
 }
 
 .wiki-link a {

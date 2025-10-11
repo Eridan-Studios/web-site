@@ -38,62 +38,6 @@ class CharacterSheetModal {
                                 <div class="avatar" aria-hidden="true">
                                     <span>Portrait 200×200</span>
                                 </div>
-                                <div class="abilities" role="list" aria-label="Core abilities">
-                                    <div class="box" role="listitem">
-                                        <span class="label">Design</span>
-                                        <div class="progress-container">
-                                            <div class="progress-bar">
-                                                <div class="progress-fill" style="width: 0%"></div>
-                                            </div>
-                                            <div class="progress-value">0</div>
-                                        </div>
-                                    </div>
-                                    <div class="box">
-                                        <span class="label">Rules</span>
-                                        <div class="progress-container">
-                                            <div class="progress-bar">
-                                                <div class="progress-fill" style="width: 0%"></div>
-                                            </div>
-                                            <div class="progress-value">0</div>
-                                        </div>
-                                    </div>
-                                    <div class="box">
-                                        <span class="label">Writing</span>
-                                        <div class="progress-container">
-                                            <div class="progress-bar">
-                                                <div class="progress-fill" style="width: 0%"></div>
-                                            </div>
-                                            <div class="progress-value">0</div>
-                                        </div>
-                                    </div>
-                                    <div class="box">
-                                        <span class="label">Art</span>
-                                        <div class="progress-container">
-                                            <div class="progress-bar">
-                                                <div class="progress-fill" style="width: 0%"></div>
-                                            </div>
-                                            <div class="progress-value">0</div>
-                                        </div>
-                                    </div>
-                                    <div class="box">
-                                        <span class="label">Tech</span>
-                                        <div class="progress-container">
-                                            <div class="progress-bar">
-                                                <div class="progress-fill" style="width: 0%"></div>
-                                            </div>
-                                            <div class="progress-value">0</div>
-                                        </div>
-                                    </div>
-                                    <div class="box">
-                                        <span class="label">Playtesting</span>
-                                        <div class="progress-container">
-                                            <div class="progress-bar">
-                                                <div class="progress-fill" style="width: 0%"></div>
-                                            </div>
-                                            <div class="progress-value">0</div>
-                                        </div>
-                                    </div>
-                                </div>
                             </aside>
 
                             <main>
@@ -354,22 +298,6 @@ class CharacterSheetModal {
             avatarEl.innerHTML = `<img src="${characterData.avatar}" alt="${characterData.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">`;
         }
 
-        // Update abilities - using JSON data instead of hardcoded values
-        if (characterData.abilities) {
-            const abilityBoxes = sheet.querySelectorAll('.abilities .box');
-            const abilityKeys = ['design', 'rules', 'writing', 'art', 'tech', 'playtesting'];
-            
-            abilityBoxes.forEach((box, index) => {
-                const progressFill = box.querySelector('.progress-fill');
-                const progressValue = box.querySelector('.progress-value');
-                if (progressFill && progressValue && characterData.abilities[abilityKeys[index]] !== undefined) {
-                    const value = characterData.abilities[abilityKeys[index]];
-                    const percentage = (value / 10) * 100; // Convert 1-10 scale to percentage
-                    progressFill.style.width = `${percentage}%`;
-                    progressValue.textContent = value;
-                }
-            });
-        }
 
         // Update backstory
         const backstoryEl = sheet.querySelector('.panel h2 + p');

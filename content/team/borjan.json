@@ -4,14 +4,6 @@
   "class": "Gameplay Systems Designer",
   "vibe": "Lawful Architect",
   "avatar": "content/images/sven.jpg",
-  "abilities": {
-    "design": 10,
-    "rules": 10,
-    "writing": 7,
-    "art": 6,
-    "tech": 8,
-    "playtesting": 9
-  },
   "backstory": "Systems architect who transforms creative visions into elegant, balanced mechanics. Borjan joined the Arena design group early in development and has been instrumental in creating engaging gameplay loops that keep players coming back. His expertise in mathematical game design ensures that complex systems remain intuitive and fun. Borjan's analytical approach to game mechanics makes him the go-to person for balancing asymmetric gameplay and ensuring fair competitive experiences.",
   "strengths": [
     "Can mathematically predict game balance before playtesting",
