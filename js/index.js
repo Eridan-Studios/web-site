@@ -293,7 +293,7 @@ function populateGameGallery(galleryContainer, galleryImages, gameTitle) {
     
     validImages.forEach((imagePath, index) => {
         const galleryImage = document.createElement('img');
-        const fullImagePath = imagePath.startsWith('/') ? imagePath : `content/images${imagePath}`;
+        const fullImagePath = imagePath.startsWith('/') ? imagePath : `content/images/${imagePath}`;
         galleryImage.src = fullImagePath;
         galleryImage.alt = `${gameTitle} - Gallery Image ${index + 1}`;
         galleryImage.className = 'gallery-image';
