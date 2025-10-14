@@ -1,5 +1,4 @@
 // Games page functionality
-const GAMES_JSON_URL = 'https://eridan-studios.github.io/web-site/content/games.json';
 
 document.addEventListener('DOMContentLoaded', function() {
     loadGames();
@@ -7,7 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 async function loadGames() {
     try {
-        const response = await fetch(GAMES_JSON_URL);
+        const gamesUrl = await window.domainConfig.getContentUrl('games.json');
+        const response = await fetch(gamesUrl);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }

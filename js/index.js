@@ -176,14 +176,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ===== GAMES GALLERY =====
-const GAMES_JSON_URL = 'https://eridan-studios.github.io/web-site/content/games.json';
 const gamesGallery = document.getElementById('games-gallery');
 const gameCardTemplate = document.getElementById('game-card-template');
 
 // Fetch games data and populate gallery
 async function loadGames() {
     try {
-        const response = await fetch(GAMES_JSON_URL);
+        const gamesUrl = await window.domainConfig.getContentUrl('games.json');
+        const response = await fetch(gamesUrl);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -394,14 +394,14 @@ function addGalleryNavigation(galleryContainer) {
 document.addEventListener('DOMContentLoaded', loadGames);
 
 // ===== WORLDS GALLERY =====
-const WORLDS_JSON_URL = 'https://eridan-studios.github.io/web-site/content/worlds.json';
 const worldsGrid = document.getElementById('worlds-grid');
 const worldCardTemplate = document.getElementById('world-card-template');
 
 // Fetch worlds data and populate gallery
 async function loadWorlds() {
     try {
-        const response = await fetch(WORLDS_JSON_URL);
+        const worldsUrl = await window.domainConfig.getContentUrl('worlds.json');
+        const response = await fetch(worldsUrl);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -566,7 +566,8 @@ async function populateWorldGamesGrid(gamesGrid, gameIds) {
 // Load games data from JSON
 async function loadGamesData() {
     try {
-        const response = await fetch('https://eridan-studios.github.io/web-site/content/games.json');
+        const gamesUrl = await window.domainConfig.getContentUrl('games.json');
+        const response = await fetch(gamesUrl);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }

@@ -3,13 +3,13 @@ class TeamLoader {
     constructor() {
         this.teamMembers = [];
         this.container = document.getElementById('team-members-container');
-        this.BASE_URL = 'https://eridan-studios.github.io/web-site/content/team/';
     }
 
     async loadTeamMembers() {
         try {
             // Load the team.json file to get the list of team member files
-            const teamResponse = await fetch(`${this.BASE_URL}team.json`);
+            const teamUrl = await window.domainConfig.getContentUrl('team/team.json');
+            const teamResponse = await fetch(teamUrl);
             if (!teamResponse.ok) {
                 throw new Error(`Failed to load team.json: ${teamResponse.status}`);
             }
@@ -19,7 +19,8 @@ class TeamLoader {
             // Load each team member's data
             const teamPromises = teamFiles.map(async (filename) => {
                 try {
-                    const memberResponse = await fetch(`${this.BASE_URL}${filename}`);
+                    const memberUrl = await window.domainConfig.getContentUrl(`team/${filename}`);
+                    const memberResponse = await fetch(memberUrl);
                     if (!memberResponse.ok) {
                         console.warn(`Failed to load ${filename}: ${memberResponse.status}`);
                         return null;
@@ -68,7 +69,7 @@ class TeamLoader {
         img.alt = member.name;
         img.onerror = () => {
             // Fallback to placeholder if image fails to load
-            img.src = 'https://eridan-studios.github.io/web-site/content/images/placeholder-user.jpg';
+            img.src = window.domainConfig.getFallbackUrl('/content/images/placeholder-user.jpg');
         };
 
         avatarDiv.appendChild(img);

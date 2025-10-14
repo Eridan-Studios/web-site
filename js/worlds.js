@@ -1,5 +1,4 @@
 // ===== WORLDS PAGE FUNCTIONALITY =====
-const WORLDS_JSON_URL = 'https://eridan-studios.github.io/web-site/content/worlds.json';
 
 // Load worlds data from JSON
 async function loadWorlds() {
@@ -11,7 +10,8 @@ async function loadWorlds() {
     }
     
     try {
-        const response = await fetch(WORLDS_JSON_URL);
+        const worldsUrl = await window.domainConfig.getContentUrl('worlds.json');
+        const response = await fetch(worldsUrl);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -156,7 +156,8 @@ async function populateWorldGamesGrid(gamesGrid, gameIds) {
 // Load games data from JSON
 async function loadGamesData() {
     try {
-        const response = await fetch('https://eridan-studios.github.io/web-site/content/games.json');
+        const gamesUrl = await window.domainConfig.getContentUrl('games.json');
+        const response = await fetch(gamesUrl);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }

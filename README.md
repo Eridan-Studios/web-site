@@ -97,7 +97,7 @@ web-site/
 
 ## 🤝 Community
 
-- **Discord**: [Join our Discord community](https://discord.gg/D9cjBrynr2)
+- **Discord**: ~~Join our Discord community~~ (Currently disabled)
 - **Newsletter**: Subscribe through the website footer
 - **Social Media**: Follow us on YouTube, Gamefound, and Twitter (links coming soon)
 

@@ -3,8 +3,6 @@
     'use strict';
     
     // Local constants to avoid conflicts
-    const WORLDS_JSON_URL = 'https://eridan-studios.github.io/web-site/content/worlds.json';
-    const GAMES_JSON_URL = 'https://eridan-studios.github.io/web-site/content/games.json';
 
 // Get URL parameters
 function getUrlParameter(name) {
@@ -22,7 +20,8 @@ async function loadWorldData() {
     }
     
     try {
-        const response = await fetch(WORLDS_JSON_URL);
+        const worldsUrl = await window.domainConfig.getContentUrl('worlds.json');
+        const response = await fetch(worldsUrl);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -236,7 +235,8 @@ async function populateWorldGames(gameIds) {
     
     try {
         // Load games data
-        const response = await fetch(GAMES_JSON_URL);
+        const gamesUrl = await window.domainConfig.getContentUrl('games.json');
+        const response = await fetch(gamesUrl);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
