@@ -72,154 +72,73 @@ async function populateWorldPage(world) {
         wikiLink.style.display = 'inline-block';
     }
     
-    // Populate features cards
-    populateFeaturesCards(world.gameplay_pillars || []);
     
     // Update games section
     const worldGamesTitle = document.getElementById('world-games-title');
     
     worldGamesTitle.textContent = `Games in ${world.name}`;
     
+    // Load and populate features
+    populateWorldFeatures(world.gameplay_pillars || []);
+    
     // Load and populate games
     await populateWorldGames(world.games || []);
 }
 
-// Populate features carousel
-function populateFeaturesCards(pillars) {
-    const featuresTrack = document.getElementById('features-track');
+// Populate world features
+function populateWorldFeatures(features) {
     const featuresIndicators = document.getElementById('features-indicators');
+    const carouselContent = document.getElementById('carousel-content');
     
     // Clear existing content
-    featuresTrack.innerHTML = '';
     featuresIndicators.innerHTML = '';
+    carouselContent.innerHTML = '';
     
-    if (!pillars || pillars.length === 0) {
-        // Hide the entire features section if no pillars
+    if (!features || features.length === 0) {
+        // Hide the features section if no features
         document.querySelector('.world-features').style.display = 'none';
         return;
     }
     
-    // Create feature slides
-    pillars.forEach((pillar, index) => {
+    // Show the features section
+    document.querySelector('.world-features').style.display = 'block';
+    
+    // Generate indicators
+    features.forEach((feature, index) => {
+        const indicator = document.createElement('div');
+        indicator.className = 'indicator';
+        if (index === 0) {
+            indicator.classList.add('active');
+        }
+        indicator.textContent = index + 1;
+        featuresIndicators.appendChild(indicator);
+    });
+    
+    // Generate feature slides
+    features.forEach((feature, index) => {
         const slide = document.createElement('div');
-        slide.className = 'carousel-slide';
-        if (index === 0) slide.classList.add('active');
+        slide.className = 'feature-slide';
+        if (index === 0) {
+            slide.classList.add('active');
+        }
         
         slide.innerHTML = `
             <div class="feature-content">
-                <h3 class="feature-title">${pillar.title}</h3>
+                <h3 class="feature-title">${feature.title}</h3>
                 <div class="feature-description">
-                    ${pillar.text.split('\n\n').map(paragraph => `<p>${paragraph}</p>`).join('')}
+                    <p>${feature.text}</p>
                 </div>
             </div>
         `;
         
-        featuresTrack.appendChild(slide);
-        
-        // Create numbered indicator
-        const indicator = document.createElement('button');
-        indicator.className = 'carousel-indicator';
-        if (index === 0) indicator.classList.add('active');
-        indicator.textContent = index + 1;
-        indicator.setAttribute('aria-label', `Go to feature ${index + 1}`);
-        
-        featuresIndicators.appendChild(indicator);
+        carouselContent.appendChild(slide);
     });
     
-    // Initialize carousel
-    initializeFeaturesCarousel();
+    // Re-initialize carousel after content is loaded
+    setTimeout(() => {
+        initializeFeaturesCarousel();
+    }, 100);
 }
-
-// Initialize features carousel functionality
-function initializeFeaturesCarousel() {
-    const track = document.getElementById('features-track');
-    const slides = track.querySelectorAll('.carousel-slide');
-    const indicators = document.querySelectorAll('#features-indicators .carousel-indicator');
-    const prevBtn = document.getElementById('features-prev');
-    const nextBtn = document.getElementById('features-next');
-    
-    let currentIndex = 0;
-    const totalSlides = slides.length;
-    
-    if (totalSlides === 0) return;
-    
-    // Function to show specific slide with smooth transition
-    function showSlide(index, direction = 'next') {
-        if (index === currentIndex) return;
-        
-        const currentSlide = slides[currentIndex];
-        const nextSlide = slides[index];
-        
-        // Add slide-out class to current slide
-        if (direction === 'next') {
-            currentSlide.classList.add('slide-out-left');
-        } else {
-            currentSlide.classList.add('slide-out-right');
-        }
-        
-        // Remove active class from current slide
-        currentSlide.classList.remove('active');
-        
-        // Position and show next slide
-        if (direction === 'next') {
-            nextSlide.classList.add('slide-in-right');
-        } else {
-            nextSlide.classList.add('slide-in-left');
-        }
-        
-        // Update indicators
-        indicators.forEach((indicator, i) => {
-            indicator.classList.toggle('active', i === index);
-        });
-        
-        // Clean up classes after transition
-        setTimeout(() => {
-            currentSlide.classList.remove('slide-out-left', 'slide-out-right', 'active');
-            nextSlide.classList.remove('slide-in-left', 'slide-in-right');
-            nextSlide.classList.add('active');
-        }, 500);
-        
-        currentIndex = index;
-    }
-    
-    // Function to go to next slide
-    function nextSlide() {
-        const nextIndex = (currentIndex + 1) % totalSlides;
-        showSlide(nextIndex, 'next');
-    }
-    
-    // Function to go to previous slide
-    function prevSlide() {
-        const prevIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        showSlide(prevIndex, 'prev');
-    }
-    
-    // Add event listeners
-    prevBtn.addEventListener('click', prevSlide);
-    nextBtn.addEventListener('click', nextSlide);
-    
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => {
-            const direction = index > currentIndex ? 'next' : 'prev';
-            showSlide(index, direction);
-        });
-    });
-    
-    // Add keyboard navigation
-    document.addEventListener('keydown', (e) => {
-        if (document.querySelector('.world-features').contains(document.activeElement) || 
-            document.querySelector('.world-features').contains(e.target)) {
-            if (e.key === 'ArrowLeft') {
-                e.preventDefault();
-                prevSlide();
-            } else if (e.key === 'ArrowRight') {
-                e.preventDefault();
-                nextSlide();
-            }
-        }
-    });
-}
-
 
 // Populate world games
 async function populateWorldGames(gameIds) {
@@ -276,7 +195,9 @@ function createGameCard(game) {
             <h3>${game.title}</h3>
             <p>${game.description}</p>
         </div>
-        <a href="game.html?game=${game.slug}" class="game-card-cta">Learn More →</a>
+        <div class="game-card-footer">
+            <a href="game.html?game=${game.slug}" class="game-card-cta">Learn More →</a>
+        </div>
     `;
     
     return gameCard;
@@ -302,6 +223,86 @@ function showError(message) {
     // Hide banner image
     document.getElementById('world-banner-image').style.display = 'none';
     document.getElementById('wiki-link').style.display = 'none';
+}
+
+// Initialize features carousel functionality
+function initializeFeaturesCarousel() {
+    const indicators = document.querySelectorAll('.indicator');
+    const slides = document.querySelectorAll('.feature-slide');
+    const prevBtn = document.querySelector('.btn-prev .carousel-btn');
+    const nextBtn = document.querySelector('.btn-next .carousel-btn');
+    const carousel = document.querySelector('.features-carousel');
+    
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    
+    if (totalSlides === 0) return;
+    
+    // Remove existing event listeners to prevent duplicates
+    prevBtn.replaceWith(prevBtn.cloneNode(true));
+    nextBtn.replaceWith(nextBtn.cloneNode(true));
+    
+    // Get fresh references after cloning
+    const newPrevBtn = document.querySelector('.btn-prev .carousel-btn');
+    const newNextBtn = document.querySelector('.btn-next .carousel-btn');
+    
+    // Calculate the height needed for the tallest slide
+    function calculateCarouselHeight() {
+        let maxHeight = 0;
+        
+        // Temporarily show all slides to measure their heights
+        slides.forEach(slide => {
+            slide.style.display = 'block';
+            const height = slide.offsetHeight;
+            if (height > maxHeight) {
+                maxHeight = height;
+            }
+            slide.style.display = '';
+        });
+        
+        // Set the carousel height to accommodate the tallest slide
+        carousel.style.height = maxHeight + 'px';
+    }
+    
+    // Calculate height on load and resize
+    calculateCarouselHeight();
+    window.addEventListener('resize', calculateCarouselHeight);
+    
+    // Function to show specific slide
+    function showSlide(index) {
+        // Remove active class from all slides and indicators
+        slides.forEach(slide => slide.classList.remove('active'));
+        indicators.forEach(indicator => indicator.classList.remove('active'));
+        
+        // Add active class to current slide and indicator
+        slides[index].classList.add('active');
+        indicators[index].classList.add('active');
+        
+        currentIndex = index;
+    }
+    
+    // Function to go to next slide
+    function nextSlide() {
+        const nextIndex = (currentIndex + 1) % totalSlides;
+        showSlide(nextIndex);
+    }
+    
+    // Function to go to previous slide
+    function prevSlide() {
+        const prevIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        showSlide(prevIndex);
+    }
+    
+    // Add event listeners
+    newPrevBtn.addEventListener('click', prevSlide);
+    newNextBtn.addEventListener('click', nextSlide);
+    
+    // Add click listeners to indicators
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            showSlide(index);
+        });
+    });
 }
 
 // Load world data when DOM is ready
