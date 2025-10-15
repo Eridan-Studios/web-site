@@ -234,16 +234,13 @@ function createGameCard(game) {
     const gameCard = gameCardTemplate.content.cloneNode(true);
     
     // Get elements from the cloned template
-    const cardLink = gameCard.querySelector('.game-card');
+    const cardElement = gameCard.querySelector('.game-card-games');
     const cardImage = gameCard.querySelector('.game-card-image img');
     const statusBadge = gameCard.querySelector('.status-badge');
     const cardTitle = gameCard.querySelector('.game-card-content h3');
     const cardDescription = gameCard.querySelector('.game-card-content p');
+    const platformsContainer = gameCard.querySelector('.game-platforms');
     const tagsContainer = gameCard.querySelector('.game-tags');
-    const galleryContainer = gameCard.querySelector('.game-gallery');
-    
-    // Set card link to individual game page
-    cardLink.href = `game.html?game=${game.slug}`;
     
     // Set image source and alt text
     const imagePath = game.image.startsWith('/') ? game.image : `content/images/${game.image}`;
@@ -255,7 +252,18 @@ function createGameCard(game) {
     
     // Set title and description
     cardTitle.textContent = game.title;
-    cardDescription.textContent = game.shortDescription;
+    cardDescription.innerHTML = game.shortDescription;
+    
+    // Set platforms
+    platformsContainer.innerHTML = '';
+    if (game.platforms && Array.isArray(game.platforms)) {
+        game.platforms.forEach(platform => {
+            const platformSpan = document.createElement('span');
+            platformSpan.textContent = platform;
+            platformSpan.className = 'platform-tag';
+            platformsContainer.appendChild(platformSpan);
+        });
+    }
     
     // Create and add genre tags
     tagsContainer.innerHTML = '';
@@ -268,127 +276,14 @@ function createGameCard(game) {
         });
     }
     
-    // Populate gallery if it exists
-    if (game.gallery && Array.isArray(game.gallery) && game.gallery.length > 0) {
-        populateGameGallery(galleryContainer, game.gallery, game.title);
-    }
+    // Set game card click handler to individual game page
+    cardElement.addEventListener('click', () => {
+        window.location.href = `game.html?game=${game.slug}`;
+    });
     
     return gameCard;
 }
 
-// Populate gallery container with images
-function populateGameGallery(galleryContainer, galleryImages, gameTitle) {
-    galleryContainer.innerHTML = '';
-    
-    // Filter out placeholder images that don't exist
-    const validImages = galleryImages.filter(imagePath => {
-        // Skip placeholder images
-        return !imagePath.includes('placeholder.svg') && !imagePath.includes('placeholder.jpg');
-    });
-    
-    // If no valid images, don't populate the gallery
-    if (validImages.length === 0) {
-        return;
-    }
-    
-    validImages.forEach((imagePath, index) => {
-        const galleryImage = document.createElement('img');
-        const fullImagePath = imagePath.startsWith('/') ? imagePath : `content/images/${imagePath}`;
-        galleryImage.src = fullImagePath;
-        galleryImage.alt = `${gameTitle} - Gallery Image ${index + 1}`;
-        galleryImage.className = 'gallery-image';
-        
-        // Handle image load errors
-        galleryImage.onerror = () => {
-            console.warn(`Failed to load gallery image: ${fullImagePath}`);
-            galleryImage.style.display = 'none';
-        };
-        
-        galleryContainer.appendChild(galleryImage);
-    });
-    
-    // Add gallery navigation functionality
-    addGalleryNavigation(galleryContainer);
-}
-
-// Add gallery navigation functionality
-function addGalleryNavigation(galleryContainer) {
-    const images = galleryContainer.querySelectorAll('.gallery-image');
-    if (images.length <= 1) return;
-    
-    let currentImageIndex = 0;
-    
-    // Show only the first image initially
-    images.forEach((img, index) => {
-        img.style.display = index === 0 ? 'block' : 'none';
-    });
-    
-    // Add navigation arrows
-    const prevArrow = document.createElement('div');
-    prevArrow.className = 'gallery-nav gallery-prev';
-    prevArrow.innerHTML = '‹';
-    prevArrow.style.display = 'none';
-    
-    const nextArrow = document.createElement('div');
-    nextArrow.className = 'gallery-nav gallery-next';
-    nextArrow.innerHTML = '›';
-    nextArrow.style.display = 'none';
-    
-    galleryContainer.appendChild(prevArrow);
-    galleryContainer.appendChild(nextArrow);
-    
-    // Navigation functions
-    function showImage(index) {
-        images.forEach((img, i) => {
-            img.style.display = i === index ? 'block' : 'none';
-        });
-        prevArrow.style.display = index > 0 ? 'block' : 'none';
-        nextArrow.style.display = index < images.length - 1 ? 'block' : 'none';
-    }
-    
-    function nextImage() {
-        if (currentImageIndex < images.length - 1) {
-            currentImageIndex++;
-            showImage(currentImageIndex);
-        }
-    }
-    
-    function prevImage() {
-        if (currentImageIndex > 0) {
-            currentImageIndex--;
-            showImage(currentImageIndex);
-        }
-    }
-    
-    // Event listeners
-    nextArrow.addEventListener('click', (e) => {
-        e.stopPropagation();
-        nextImage();
-    });
-    
-    prevArrow.addEventListener('click', (e) => {
-        e.stopPropagation();
-        prevImage();
-    });
-    
-    // Auto-advance gallery on hover
-    let galleryInterval;
-    const gameCard = galleryContainer.closest('.game-card');
-    
-    gameCard.addEventListener('mouseenter', () => {
-        if (images.length > 1) {
-            galleryInterval = setInterval(nextImage, 2000); // Change image every 2 seconds
-        }
-    });
-    
-    gameCard.addEventListener('mouseleave', () => {
-        if (galleryInterval) {
-            clearInterval(galleryInterval);
-            currentImageIndex = 0; // Reset to first image
-            showImage(currentImageIndex);
-        }
-    });
-}
 
 // Initialize games gallery when DOM is loaded
 document.addEventListener('DOMContentLoaded', loadGames);
